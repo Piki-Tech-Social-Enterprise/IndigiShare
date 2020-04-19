@@ -15,7 +15,7 @@ This is the official open source repository for IndigiShare, your feedback will 
 
 ## Tāpaetanga (Contribute)
 
-We courage you to participate and proactively contribute to our project. The general code of conduct is don't be that "person", the one that appears on everyone's radar for all the wrong reasons. Conflicts are natural so you are expected to be 
+We courage you to participate and proactively contribute to our project. The general code of conduct is don't be that _**"person"**_, the one that appears on everyone's radar for all the wrong reasons. Poor conduct will be dealt with immediately.
 
 ## Raihana (License)
 
