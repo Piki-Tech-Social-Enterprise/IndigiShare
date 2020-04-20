@@ -18,7 +18,7 @@ const App = () => {
         <div className="container">
           <a className="navbar-brand" href="/">
             <img src={require('../assets/img/islogo-760x760.png')} height="30" class="d-inline-block align-top" alt={REACT_APP_WEB_NAME} />
-            &nbsp;{REACT_APP_WEB_NAME} 
+            &nbsp;{REACT_APP_WEB_NAME}
           </a>
           &nbsp;#IndigiShare
           <a href="https://www.hackthecrisis.nz" target="_blank" rel="noopener noreferrer">
@@ -153,13 +153,23 @@ const App = () => {
 
       {/* Opportunities */}
       <section className="opportunities text-center bg-light" style={{
-        paddingTop: '7rem',
-        paddingBottom: '7rem'
+        paddingTop: '5rem',
+        paddingBottom: '5rem'
       }}>
         <div className="container">
-          <h2 className="mb-5 text-success">Where to from here...</h2>
+          <h2 className="mb-5 text-success">Watch our journey...</h2>
           <div className="row">
-            More details to come so please check back later. Like today; lets say, an hour. <span role="img" aria-label="...">😁</span>
+            <div className="col">
+              <iframe
+                title="IndigiShare"
+                width="560"
+                height="315"
+                src="//www.youtube.com/embed/cERv96n0iyA"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -201,7 +211,7 @@ const App = () => {
                   <a href="#IndigiShare" onClick={e => showAlert(e, 'Privacy Policy')} className="text-success">Privacy Policy</a>
                 </li>
               </ul> */}
-              <p className="text-muted small mb-4 mb-lg-0">&copy; IndigiShare 2020.</p>
+              <p className="text-muted small mb-4 mb-lg-0">&copy; IndigiShare 2020</p>
             </div>
             <div className="col-lg-6 h-100 text-center text-lg-right my-auto">
               <ul className="list-inline mb-0">
