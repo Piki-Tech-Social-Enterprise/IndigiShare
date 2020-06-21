@@ -28,12 +28,10 @@ const AuthNavbar = props => {
   };
   return (
     <Navbar fluid>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <a href={window.location.href}>{props.brandText}</a>
-        </Navbar.Brand>
-        <Navbar.Toggle onClick={mobileSidebarToggle} />
-      </Navbar.Header>
+      <Navbar.Brand>
+        <a href={window.location.href}>{props.brandText}</a>
+      </Navbar.Brand>
+      <Navbar.Toggle onClick={mobileSidebarToggle} />
       <Navbar.Collapse>
         <AuthNavbarLinks />
       </Navbar.Collapse>

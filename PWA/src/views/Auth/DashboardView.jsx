@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Grid,
+  Container,
   Row,
   Col
 } from 'react-bootstrap';
@@ -9,7 +9,7 @@ import withAuthorization from 'components/Firebase/HighOrder/withAuthorization';
 const DashboardView = props => {
   return (
     <div className="content">
-      <Grid fluid>
+      <Container fluid>
         <Row>
           <Col className="pt-0 pb-3 px-3">
             <h3>Nau mai, haere mai <b className="bg-success text-white py-0 px-2">{props.authUser && props.authUser.displayName}</b> kī IndigiShare.</h3>
@@ -18,7 +18,7 @@ const DashboardView = props => {
             </p>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     </div>
   );
 };

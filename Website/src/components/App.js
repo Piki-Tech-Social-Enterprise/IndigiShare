@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {
+  useState,
+  createRef
+} from 'react';
 import '../assets/css/App.css';
 import '../assets/css/index.css';
-import '../assets/css/indigishare-platform.min.css';
+import '../assets/scss/indigishare-platform.scss?v=1.0.0';
 import '../assets/js/vendor/bootstrap/css/bootstrap.min.css';
 import '../assets/js/vendor/fontawesome-free/css/all.min.css';
 import '../assets/js/vendor/simple-line-icons/css/simple-line-icons.css';
 
 const App = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = createRef();
+  const navRef = createRef();
+  const handleMenuOverlayOnClick = async e => {
+    e.preventDefault();
+    menuRef.current.classList.toggle('clicked');
+    navRef.current.classList.toggle('show');
+    setShowMenu(!showMenu);
+  };
   const {
     REACT_APP_WEB_NAME,
     REACT_APP_PWA_BASE_URL
@@ -15,19 +27,34 @@ const App = () => {
     <>
       {/* Navigation */}
       <nav className="navbar navbar-light bg-light static-top">
-        <div className="container">
+        <div className="container text-center">
           <a className="navbar-brand" href="/">
-            <img src={require('../assets/img/islogo-760x760.png')} height="30" class="d-inline-block align-top" alt={REACT_APP_WEB_NAME} />
+            <img src={require('../assets/img/islogo-760x760.png')} height="30" className="d-inline-block align-top" alt={REACT_APP_WEB_NAME} />
             &nbsp;{REACT_APP_WEB_NAME}
           </a>
-          &nbsp;#IndigiShare
-          <a href="https://www.hackthecrisis.nz" target="_blank" rel="noopener noreferrer">
+          <span className="d-none d-lg-inline-block">
+            &nbsp;#IndigiShare
+          </span>
+          <a className="mx-sm-auto" href="https://www.hackthecrisis.nz" target="_blank" rel="noopener noreferrer">
             <img alt="Hack the Crisis NZ 2020" src={require('../assets/img/HacktheCrisisNZ_Logo Green.png')} style={{
               height: '50px'
             }} />
+            <span className="d-none d-lg-inline-block" style={{
+              color: 'initial'
+            }}>
+              &nbsp;&nbsp;&nbsp;#HacktheCrisisNZ
+            </span>
           </a>
-            &nbsp;#HacktheCrisisNZ
-          <a className="btn btn-success" href={`${REACT_APP_PWA_BASE_URL}/public/Login`} target="_blank" rel="noopener noreferrer">Register/Login</a>
+          <div className="menu" ref={menuRef} onClick={handleMenuOverlayOnClick}>
+            <span />
+          </div>
+          <nav id="nav" ref={navRef}>
+            <ul className="main text-right">
+              <li><a href={`${REACT_APP_PWA_BASE_URL}/public/Login`} target="_blank" rel="noopener noreferrer">Register/Login</a></li>
+              <li><a href="#IndigiShare">Insights</a></li>
+            </ul>
+          </nav>
+          <div className="overlay" onClick={handleMenuOverlayOnClick} />
         </div>
       </nav>
 
@@ -165,9 +192,9 @@ const App = () => {
                 width="560"
                 height="315"
                 src="//www.youtube.com/embed/cERv96n0iyA"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               />
             </div>
           </div>
