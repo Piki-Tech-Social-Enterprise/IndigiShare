@@ -77,7 +77,7 @@ const RegisterView = props => {
             <div className="logo-container">
               <img alt={`${REACT_APP_PWA_NAME}`} src={require('assets/img/islogo-760x760.png')} />
             </div>
-            Regsiter here.
+            Register here.
           </CardHeader>
           <CardBody className="pb-0">
             <Input

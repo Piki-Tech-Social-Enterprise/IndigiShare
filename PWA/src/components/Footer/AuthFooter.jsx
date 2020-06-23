@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  Grid
+  Container
 } from 'react-bootstrap';
 import CopyrightInfomation from 'components/App/CopyrightInfomation';
 
 const AuthFooter = () => {
   return (
     <footer className="footer">
-      <Grid fluid>
+      <Container fluid>
         <CopyrightInfomation />
-      </Grid>
+      </Container>
     </footer>
   );
 };

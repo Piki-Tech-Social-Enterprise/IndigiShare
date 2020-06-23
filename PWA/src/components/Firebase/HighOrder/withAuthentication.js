@@ -15,11 +15,13 @@ const withAuthentication = Component => {
     const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem(localStorageItemId)));
     useEffect(() => {
       let listener = null;
-      setIsLoading(true);
+      // setIsLoading(true);
       (async function useEffectAsync() {
         listener = await props.firebase.authUserListener(authUser => {
-          localStorage.setItem(localStorageItemId, JSON.stringify(authUser));
-          setAuthUser(authUser);
+          if (authUser) {
+            localStorage.setItem(localStorageItemId, JSON.stringify(authUser));
+            setAuthUser(authUser);
+          }
         }, () => {
           localStorage.removeItem(localStorageItemId);
           setAuthUser(null);
@@ -27,7 +29,7 @@ const withAuthentication = Component => {
       })();
       setIsLoading(false);
       return () => {
-        listener();
+        listener && listener();
       };
     }, [props, setAuthUser]);
     return (
