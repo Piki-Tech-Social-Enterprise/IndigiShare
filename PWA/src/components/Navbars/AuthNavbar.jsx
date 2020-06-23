@@ -4,7 +4,7 @@ import React, {
 import {
   Navbar
 } from 'react-bootstrap';
-import AuthNavbarLinks from './AuthNavbarLinks';
+// import AuthNavbarLinks from './AuthNavbarLinks';
 
 const AuthNavbar = props => {
   const [sidebarExists, setSidebarExists] = useState(false);
@@ -32,9 +32,9 @@ const AuthNavbar = props => {
         <a href={window.location.href}>{props.brandText}</a>
       </Navbar.Brand>
       <Navbar.Toggle onClick={mobileSidebarToggle} />
-      <Navbar.Collapse>
+      {/* <Navbar.Collapse>
         <AuthNavbarLinks />
-      </Navbar.Collapse>
+      </Navbar.Collapse> */}
       <div className="float-right">
         <a href="#InddigiShare" onClick={handleLogoutOnClick}>Logout</a>
       </div>

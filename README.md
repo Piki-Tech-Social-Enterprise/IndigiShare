@@ -10,7 +10,7 @@ IndigiShare was developed during the [Hack the Crisis New Zealand](https://hackt
 
 This is the official open source repository for IndigiShare, your feedback will help us improve the platform:
 
-* Send an email to [IndigiShare@GMail.com](IndigiShare@GMail.com)
+* Send an email to [Info@IndigiShare.com](Info@IndigiShare.com)
 * Register a new issue [here](https://github.com/Piki-Tech-Social-Enterprise/IndigiShare/issues/new/choose)
 
 ## Tāpaetanga (Contribute)
