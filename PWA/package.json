@@ -12,7 +12,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "bootstrap": "4.5.0",
     "chartist": "0.11.4",
-    "firebase": "^7.15.3",
+    "firebase": "^7.15.4",
     "history": "4.10.1",
     "jquery": "^3.5.1",
     "node-sass": "4.14.1",
@@ -27,7 +27,7 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-toggle": "4.1.1",
-    "reactstrap": "8.4.1",
+    "reactstrap": "8.5.1",
     "sweetalert2-react": "^0.8.3"
   },
   "scripts": {
@@ -69,9 +69,9 @@
     ]
   },
   "devDependencies": {
-    "@types/googlemaps": "3.39.7",
+    "@types/googlemaps": "3.39.8",
     "@types/markerclustererplus": "2.1.33",
-    "@types/react": "16.9.38",
+    "@types/react": "16.9.41",
     "env-cmd": "^10.1.0",
     "npm-run-all": "^4.1.5",
     "typescript": "3.9.5"
