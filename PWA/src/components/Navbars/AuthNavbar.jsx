@@ -35,7 +35,7 @@ const AuthNavbar = props => {
       {/* <Navbar.Collapse>
         <AuthNavbarLinks />
       </Navbar.Collapse> */}
-      <div className="float-right">
+      <div className="ml-auto">
         <a href="#InddigiShare" onClick={handleLogoutOnClick}>Logout</a>
       </div>
     </Navbar >
