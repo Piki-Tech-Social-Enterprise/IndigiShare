@@ -16,7 +16,7 @@
 
 */
 import React, { Component } from "react";
-import { NavItem, Nav, NavDropdown, DropdownItem } from "react-bootstrap";
+import { NavItem, Nav, NavDropdown, Dropdown } from "react-bootstrap";
 
 class AdminNavbarLinks extends Component {
   render() {
@@ -41,11 +41,11 @@ class AdminNavbarLinks extends Component {
             noCaret
             id="basic-nav-dropdown"
           >
-            <DropdownItem eventKey={2.1}>Notification 1</DropdownItem>
-            <DropdownItem eventKey={2.2}>Notification 2</DropdownItem>
-            <DropdownItem eventKey={2.3}>Notification 3</DropdownItem>
-            <DropdownItem eventKey={2.4}>Notification 4</DropdownItem>
-            <DropdownItem eventKey={2.5}>Another notifications</DropdownItem>
+            <Dropdown.Item eventKey={2.1}>Notification 1</Dropdown.Item>
+            <Dropdown.Item eventKey={2.2}>Notification 2</Dropdown.Item>
+            <Dropdown.Item eventKey={2.3}>Notification 3</Dropdown.Item>
+            <Dropdown.Item eventKey={2.4}>Notification 4</Dropdown.Item>
+            <Dropdown.Item eventKey={2.5}>Another notifications</Dropdown.Item>
           </NavDropdown>
           <NavItem eventKey={3} href="#">
             <i className="fa fa-search" />
@@ -61,13 +61,13 @@ class AdminNavbarLinks extends Component {
             title="Dropdown"
             id="basic-nav-dropdown-right"
           >
-            <DropdownItem eventKey={2.1}>Action</DropdownItem>
-            <DropdownItem eventKey={2.2}>Another action</DropdownItem>
-            <DropdownItem eventKey={2.3}>Something</DropdownItem>
-            <DropdownItem eventKey={2.4}>Another action</DropdownItem>
-            <DropdownItem eventKey={2.5}>Something</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem eventKey={2.5}>Separated link</DropdownItem>
+            <Dropdown.Item eventKey={2.1}>Action</Dropdown.Item>
+            <Dropdown.Item eventKey={2.2}>Another action</Dropdown.Item>
+            <Dropdown.Item eventKey={2.3}>Something</Dropdown.Item>
+            <Dropdown.Item eventKey={2.4}>Another action</Dropdown.Item>
+            <Dropdown.Item eventKey={2.5}>Something</Dropdown.Item>
+            <Dropdown.Item divider />
+            <Dropdown.Item eventKey={2.5}>Separated link</Dropdown.Item>
           </NavDropdown>
           <NavItem eventKey={3} href="#">
             Log out
