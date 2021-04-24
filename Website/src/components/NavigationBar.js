@@ -2,6 +2,8 @@ import React, {
   useState,
   createRef
 } from 'react';
+import isLogo from '../assets/img/islogo-760x760.png';
+import hacktheCrisisNZLogo from '../assets/img/HacktheCrisisNZ_Logo Green.png';
 
 const NavagationBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,14 +23,14 @@ const NavagationBar = () => {
     <nav className="navbar navbar-light bg-light static-top">
       <div className="container text-center">
         <a className="navbar-brand" href="/">
-          <img src={require('../assets/img/islogo-760x760.png')} height="30" className="d-inline-block align-top" alt={REACT_APP_WEB_NAME} />
+          <img src={isLogo} height="30" className="d-inline-block align-top" alt={REACT_APP_WEB_NAME} />
           &nbsp;{REACT_APP_WEB_NAME}
         </a>
         <span className="d-none d-lg-inline-block">
           &nbsp;#IndigiShare
         </span>
         <a className="mx-sm-auto" href="https://www.hackthecrisis.nz" target="_blank" rel="noopener noreferrer">
-          <img alt="Hack the Crisis NZ 2020" src={require('../assets/img/HacktheCrisisNZ_Logo Green.png')} style={{
+          <img alt="Hack the Crisis NZ 2020" src={hacktheCrisisNZLogo} style={{
             height: '50px'
           }} />
           <span className="d-none d-lg-inline-block" style={{

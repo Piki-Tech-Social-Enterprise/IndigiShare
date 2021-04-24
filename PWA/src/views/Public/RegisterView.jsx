@@ -20,6 +20,7 @@ import SweetAlert from 'sweetalert2-react';
 import {
   basicRole
 } from 'components/Domains/Roles';
+import isLogo from 'assets/img/islogo-760x760.png';
 
 const RegisterView = props => {
   const defaultDisplayTitle = 'Registration Failed';
@@ -75,7 +76,7 @@ const RegisterView = props => {
         <Form className="form" onSubmit={handleSubmit} noValidate>
           <CardHeader className="text-center">
             <div className="logo-container">
-              <img alt={`${REACT_APP_PWA_NAME}`} src={require('assets/img/islogo-760x760.png')} />
+              <img alt={`${REACT_APP_PWA_NAME}`} src={isLogo} />
             </div>
             Register here.
           </CardHeader>

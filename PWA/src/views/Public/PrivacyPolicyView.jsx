@@ -1,4 +1,5 @@
 import React from 'react';
+import isLogo from 'assets/img/islogo-760x760.png';
 
 const PrivacyPolicyView = () => {
   const {
@@ -8,7 +9,7 @@ const PrivacyPolicyView = () => {
   return (
     <div className="p-3 bg-panel privacy-policy">
       <div className="logo-container">
-        <img alt={`${REACT_APP_PWA_NAME}`} src={require('assets/img/islogo-760x760.png')} />
+        <img alt={`${REACT_APP_PWA_NAME}`} src={isLogo} />
       </div>
       <h3>PRIVACY POLICY</h3>
       <p>We collect personal information from you, including information about your:</p>

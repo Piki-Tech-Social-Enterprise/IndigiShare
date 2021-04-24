@@ -22,6 +22,7 @@ import {
   Button
 } from 'reactstrap';
 import SweetAlert from 'sweetalert2-react';
+import isLogo from 'assets/img/islogo-760x760.png';
 
 const LoginView = props => {
   const defaultDisplayTitle = 'Login Failed';
@@ -75,7 +76,7 @@ const LoginView = props => {
               <Form className="form" onSubmit={handleSubmit} noValidate>
                 <CardHeader className="text-center">
                   <div className="logo-container">
-                    <img alt={`${REACT_APP_PWA_NAME}`} src={require('assets/img/islogo-760x760.png')} />
+                    <img alt={`${REACT_APP_PWA_NAME}`} src={isLogo} />
                   </div>
                   {REACT_APP_PWA_NAME} v{REACT_APP_PWA_BUILD_VERSION}
                 </CardHeader>

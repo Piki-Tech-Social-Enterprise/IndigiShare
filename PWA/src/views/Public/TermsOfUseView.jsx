@@ -1,4 +1,5 @@
 import React from 'react';
+import isLogo from 'assets/img/islogo-760x760.png';
 
 const TermsOfUseView = () => {
   const {
@@ -8,7 +9,7 @@ const TermsOfUseView = () => {
   return (
     <div className="p-3 bg-panel terms-of-use">
       <div className="logo-container">
-        <img alt={`${REACT_APP_PWA_NAME}`} src={require('assets/img/islogo-760x760.png')} />
+        <img alt={`${REACT_APP_PWA_NAME}`} src={isLogo} />
       </div>
       <h3>TERMS OF USE ("Terms")</h3>
       <p>Last updated: 19 April 2020</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import fernImage from '../assets/img/fern-767-430.jpg';
 
 const Home = () => {
   const {
@@ -64,22 +65,16 @@ const Home = () => {
           <div className="row">
             <div className="col-lg-4">
               <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                {/* <img className="img-fluid rounded-circle mb-3" src={require('../assets/img/heeni-tito.jpg')} alt="" />
-          <h5>Hēni T.</h5> */}
                 <p className="font-weight-light font-italic mb-0">“As a man that has worked consistently since my teens, unemployment would be very hard to accept, however going out in the job market, in my late 50's is a sobering thought.”</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                {/* <img className="img-fluid rounded-circle mb-3" src={require('../assets/img/JohnShortland-300x300.png')} alt="" />
-          <h5>John S.</h5> */}
                 <p className="font-weight-light font-italic mb-0">"As an owner my team and I volunteered delivering food to whanau as I have all the logistics.. trucks, chillers, trailers etc. With no income, we thought we would help those even worse off. 3 weeks in I have. Een asked to make 1500 meals for the elderly which will be paid for. This has impacted me financially but now with business coming my way it will allow me to get my staff back to work"</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                {/* <img className="img-fluid rounded-circle mb-3" src={require('../assets/img/krisharn-ngamoki.jpg')} alt="" />
-          <h5>Krisharn N.</h5> */}
                 <p className="font-weight-light font-italic mb-0">"It has already been impacted. Cash flow has stopped but will resume at a smaller level as clients consider their options"</p>
               </div>
             </div>
@@ -92,7 +87,7 @@ const Home = () => {
         <div className="container-fluid p-0">
           <div className="row no-gutters">
             <div className="col-lg-6 order-lg-2 text-white showcase-img" style={{
-              backgroundImage: `url('${require('../assets/img/fern-767-430.jpg')}')`
+              backgroundImage: `url('${fernImage}')`
             }}></div>
             <div className="col-lg-6 order-lg-1 my-auto showcase-text">
               <h2 className="text-success">Our target market</h2>
@@ -107,7 +102,7 @@ const Home = () => {
           </div>
           <div className="row no-gutters">
             <div className="col-lg-6 text-white showcase-img" style={{
-              backgroundImage: `url('${require('../assets/img/fern-767-430.jpg')}')`
+              backgroundImage: `url('${fernImage}')`
             }}></div>
             <div className="col-lg-6 my-auto showcase-text">
               <h2 className="text-success">Our solution</h2>
@@ -116,7 +111,7 @@ const Home = () => {
           </div>
           <div className="row no-gutters">
             <div className="col-lg-6 order-lg-2 text-white showcase-img" style={{
-              backgroundImage: `url('${require('../assets/img/fern-767-430.jpg')}')`
+              backgroundImage: `url('${fernImage}')`
             }}></div>
             <div className="col-lg-6 order-lg-1 my-auto showcase-text">
               <h2 className="text-success">Our opportunity</h2>

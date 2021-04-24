@@ -8,7 +8,7 @@ import {
   useWindowEvent
 } from 'components/App/Utilities';
 import AuthNavbarLinks from '../Navbars/AuthNavbarLinks';
-import logo from 'assets/img/islogo-760x760.png';
+import isLogo from 'assets/img/islogo-760x760.png';
 
 const AuthSidebar = props => {
   const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
@@ -30,7 +30,7 @@ const AuthSidebar = props => {
       <div className="sidebar-background" style={sidebarBackground} />
       <div className="logo">
         <div className="logo-img">
-          <img src={logo} alt="logo_image" style={{
+          <img src={isLogo} alt="logo_image" style={{
             width: '34px'
           }} />
         </div>
