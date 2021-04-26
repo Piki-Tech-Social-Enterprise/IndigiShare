@@ -6,6 +6,25 @@ import {
   FontAwesomeIcon
 } from '@fortawesome/react-fontawesome';
 
+const CopyrightYear = props => {
+  const {
+    text,
+    startYear
+  } = props;
+  const today = new Date();
+  const thisYear = today.getFullYear();
+  const years = [
+    startYear
+  ];
+  if (thisYear > Number(startYear)) {
+    years.push(thisYear);
+  }
+  return (
+    <>
+      {text}<br className="d-sm-none" /> &copy; {years.join('-')}
+    </>
+  );
+};
 const AuthFooterLink = props => {
   const {
     to,
@@ -38,10 +57,9 @@ const CopyrightInfomation = () => {
     REACT_APP_PWA_NAME,
     REACT_APP_PWA_BUILD_VERSION
   } = process.env;
-  const thisYear = 1900 + new Date().getYear();
   return (
     <div className="copyright">
-      {REACT_APP_PWA_NAME} v{REACT_APP_PWA_BUILD_VERSION} &copy; {thisYear} <AuthPrivacyLink /> &amp; <AuthTermsLink />&nbsp;<GitHubLink />
+      <CopyrightYear text={`${REACT_APP_PWA_NAME} v${REACT_APP_PWA_BUILD_VERSION}`} startYear="2020" /> <AuthPrivacyLink /> &amp; <AuthTermsLink />&nbsp;<GitHubLink />
     </div>
   )
 }
