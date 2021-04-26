@@ -18,16 +18,8 @@
 import {
   lazy
 } from 'react';
-// import Dashboard from "views/Dashboard.jsx";
-// import UserProfile from "views/UserProfile.jsx";
-// import TableList from "views/TableList.jsx";
-// import Typography from "views/Typography.jsx";
-// import Icons from "views/Icons.jsx";
-// import Maps from "views/Maps.jsx";
-// import Notifications from "views/Notifications.jsx";
-// import Upgrade from "views/Upgrade.jsx";
 
-const dashboardRoutes = [
+const routes = [
   {
     path: "/Dashboard",
     name: "Dashboard",
@@ -63,63 +55,63 @@ const dashboardRoutes = [
     component: lazy(() => import('views/Public/TermsOfUseView')),
     layout: "/public"
   },
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   icon: "pe-7s-graph",
-  //   component: Dashboard,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/user",
-  //   name: "User Profile",
-  //   icon: "pe-7s-user",
-  //   component: UserProfile,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/table",
-  //   name: "Table List",
-  //   icon: "pe-7s-note2",
-  //   component: TableList,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/typography",
-  //   name: "Typography",
-  //   icon: "pe-7s-news-paper",
-  //   component: Typography,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   icon: "pe-7s-science",
-  //   component: Icons,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/maps",
-  //   name: "Maps",
-  //   icon: "pe-7s-map-marker",
-  //   component: Maps,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "pe-7s-bell",
-  //   component: Notifications,
-  //   layout: "/admin"
-  // },
-  // {
-  //   upgrade: true,
-  //   path: "/upgrade",
-  //   name: "Upgrade to PRO",
-  //   icon: "pe-7s-rocket",
-  //   component: Upgrade,
-  //   layout: "/admin"
-  // }
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: "pe-7s-graph",
+    component: lazy(() => import('views/Dashboard')),
+    layout: "/admin"
+  },
+  {
+    path: "/user",
+    name: "User Profile",
+    icon: "pe-7s-user",
+    component: lazy(() => import('views/UserProfile')),
+    layout: "/admin"
+  },
+  {
+    path: "/table",
+    name: "Table List",
+    icon: "pe-7s-note2",
+    component: lazy(() => import('views/TableList')),
+    layout: "/admin"
+  },
+  {
+    path: "/typography",
+    name: "Typography",
+    icon: "pe-7s-news-paper",
+    component: lazy(() => import('views/Typography')),
+    layout: "/admin"
+  },
+  {
+    path: "/icons",
+    name: "Icons",
+    icon: "pe-7s-science",
+    component: lazy(() => import('views/Icons')),
+    layout: "/admin"
+  },
+  {
+    path: "/maps",
+    name: "Maps",
+    icon: "pe-7s-map-marker",
+    component: lazy(() => import('views/Maps')),
+    layout: "/admin"
+  },
+  {
+    path: "/notifications",
+    name: "Notifications",
+    icon: "pe-7s-bell",
+    component: lazy(() => import('views/Notifications')),
+    layout: "/admin"
+  },
+  {
+    upgrade: true,
+    path: "/upgrade",
+    name: "Upgrade to PRO",
+    icon: "pe-7s-rocket",
+    component: lazy(() => import('views/Upgrade')),
+    layout: "/admin"
+  }
 ];
 
-export default dashboardRoutes;
+export default routes;

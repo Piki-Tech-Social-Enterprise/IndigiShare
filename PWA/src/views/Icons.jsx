@@ -16,7 +16,7 @@
 
 */
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import Card from "components/Card/Card";
 import { iconsArray } from "variables/Variables.jsx";
@@ -25,7 +25,7 @@ class Icons extends Component {
   render() {
     return (
       <div className="content">
-        <Grid fluid>
+        <Container fluid>
           <Row>
             <Col md={12}>
               <Card
@@ -67,7 +67,7 @@ class Icons extends Component {
               />
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

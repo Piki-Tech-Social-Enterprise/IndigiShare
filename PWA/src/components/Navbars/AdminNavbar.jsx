@@ -20,7 +20,7 @@ import { Navbar } from "react-bootstrap";
 
 import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 
-class Header extends Component {
+class AdminNavbar extends Component {
   constructor(props) {
     super(props);
     this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
@@ -47,12 +47,10 @@ class Header extends Component {
   render() {
     return (
       <Navbar fluid>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#pablo">{this.props.brandText}</a>
-          </Navbar.Brand>
-          <Navbar.Toggle onClick={this.mobileSidebarToggle} />
-        </Navbar.Header>
+        <Navbar.Brand>
+          <a href="#pablo">{this.props.brandText}</a>
+        </Navbar.Brand>
+        <Navbar.Toggle onClick={this.mobileSidebarToggle} />
         <Navbar.Collapse>
           <AdminNavbarLinks />
         </Navbar.Collapse>
@@ -61,4 +59,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default AdminNavbar;

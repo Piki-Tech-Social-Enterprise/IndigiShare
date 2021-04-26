@@ -27,7 +27,7 @@ import "./assets/sass/indigishare.scss?v=1.0.0";
 import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
-import AdminLayout from "layouts/Admin.jsx";
+import AdminLayout from "layouts/AdminLayout.jsx";
 import PublicLayout from "layouts/PublicLayout";
 import Global404View from "views/Public/Global404View";
 import AuthLayout from "layouts/AuthLayout";

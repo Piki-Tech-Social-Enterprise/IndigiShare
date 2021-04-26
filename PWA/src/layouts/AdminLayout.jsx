@@ -26,11 +26,12 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 
 import { style } from "variables/Variables.jsx";
 
-import routes from "routes.js";
+import routes from "../routes.js";
+console.log('routes: ', JSON.stringify(routes, null, 2));
 
 import image from "assets/img/sidebar-3.jpg";
 
-class Admin extends Component {
+class AdminLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +39,8 @@ class Admin extends Component {
       image: image,
       color: "black",
       hasImage: true,
-      fixedClasses: "dropdown show-dropdown open"
+      fixedClasses: "dropdown show-dropdown open",
+      brandText: this.getBrandText(props.location.pathname, routes)
     };
   }
   handleNotificationClick = position => {
@@ -73,34 +75,16 @@ class Admin extends Component {
       autoDismiss: 15
     });
   };
-  getRoutes = routes => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={props => (
-              <prop.component
-                {...props}
-                handleClick={this.handleNotificationClick}
-              />
-            )}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
-  };
-  getBrandText = path => {
+  getBrandText = (path, routes) => {
     for (let i = 0; i < routes.length; i++) {
-      if (
-        this.props.location.pathname.indexOf(
-          routes[i].layout + routes[i].path
-        ) !== -1
-      ) {
-        return routes[i].name;
+      const {
+        layout: routeLayout,
+        path: routePath,
+        name: routeName
+      } = routes[i];
+      const routeLayoutPath = `${routeLayout}${routePath}`;
+      if (path.indexOf(routeLayoutPath) !== -1) {
+        return routeName;
       }
     }
     return "Brand";
@@ -179,9 +163,8 @@ class Admin extends Component {
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <AdminNavbar
             {...this.props}
-            brandText={this.getBrandText(this.props.location.pathname)}
+            brandText={this.state.brandText}
           />
-          <Switch>{this.getRoutes(routes)}</Switch>
           <Footer />
           <FixedPlugin
             handleImageClick={this.handleImageClick}
@@ -199,4 +182,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default AdminLayout;
