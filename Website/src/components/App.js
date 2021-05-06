@@ -20,10 +20,14 @@ import '../assets/js/vendor/fontawesome-free/css/all.min.css';
 import '../assets/js/vendor/simple-line-icons/css/simple-line-icons.css';
 
 const HomePage = lazy(() => import('../pages/Home'));
+const TermsOfUsePage = lazy(() => import('../pages/TermsOfUse'));
+const PrivacyPolicyPage = lazy(() => import('../pages/PrivacyPolicy'));
 const InsightsPage = lazy(() => import('../pages/Insights'));
 const Global404Page = lazy(() => import('../pages/Global404Page'));
 const {
   home,
+  termsOfUse,
+  privacyPolicy,
   insights
 } = Routes;
 const App = () => {
@@ -36,6 +40,12 @@ const App = () => {
           <Switch>
             <Route exact path={home}>
               <HomePage />
+            </Route>
+            <Route exact path={termsOfUse}>
+              <TermsOfUsePage />
+            </Route>
+            <Route exact path={privacyPolicy}>
+              <PrivacyPolicyPage />
             </Route>
             <Route exact path={insights}>
               <InsightsPage />

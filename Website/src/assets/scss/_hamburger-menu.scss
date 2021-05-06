@@ -92,7 +92,7 @@
   height: 100%;
   max-width: 250px;
   width: 100%;
-  padding: 100px 40px 60px 40px;
+  padding: 70px 40px 60px 40px;
   overflow-y: auto;
   -webkit-transform: translateX(100%);
   -moz-transform: translateX(100%);
@@ -164,7 +164,6 @@
 
 @media (min-width: 667px) {
   #nav {
-    padding: 70px 30px 70px 20px;
     right: 0;
   }
   .menu.clicked span,

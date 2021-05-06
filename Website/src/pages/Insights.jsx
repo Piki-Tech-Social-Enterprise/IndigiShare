@@ -7,7 +7,7 @@ import {
 
 const Insights = () => {
   return (
-    <Container className="my-5">
+    <Container className="my-5" fluid>
       <Row>
         <Col xs={12}>
           <h1 className="p-5 bg-success text-white text-center">Insights</h1>

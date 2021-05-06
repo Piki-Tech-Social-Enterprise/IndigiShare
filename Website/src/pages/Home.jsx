@@ -1,10 +1,134 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useState
+} from 'react';
+import withReactContent from 'sweetalert2-react-content';
 import fernImage from '../assets/img/fern-767-430.jpg';
+import firebase from "firebase/app";
+import "firebase/database";
 
+const isEmptyString = value => value === '';
+const isNullOrEmpty = value => value == null || isEmptyString(value);
+const isEmailValid = email => !isNullOrEmpty(email) && email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+const INITIAL_CUSTOMSWAL_OPTIONS = {
+  buttonsStyling: false,
+  backdrop: 'rgba(0, 0, 0, 0.85)',
+  customClass: {
+    popup: 'bg-pumahara',
+    title: 'text-pumahara',
+    content: 'z-index-2',
+    input: 'form-control',
+    confirmButton: 'btn btn-success text-uppercase mx-3 col-4',
+    cancelButton: 'btn btn-danger text-uppercase mx-3 col-4'
+  }
+};
+const customSwalMixin = async props => {
+  const {
+    default: Swal
+  } = await import(/* webpackPrefetch: true, webpackChunkName: 'vendors-sweetalert2' */'sweetalert2/dist/sweetalert2.all');
+  const reactSwal = withReactContent(Swal);
+  return reactSwal.mixin(props);
+};
+const customSwal = async props => {
+  const reactSwal = await customSwalMixin(INITIAL_CUSTOMSWAL_OPTIONS);
+  return reactSwal.fire({
+    ...INITIAL_CUSTOMSWAL_OPTIONS,
+    ...props
+  });
+};
+const firebaseConfig = {
+  apiKey: "AIzaSyBAKBGkx2QZcIoekXzjAWI8Dob2o9nxhfw",
+  authDomain: "indigishare-platform.firebaseapp.com",
+  databaseURL: "https://indigishare-platform.firebaseio.com",
+  projectId: "indigishare-platform",
+  storageBucket: "indigishare-platform.appspot.com",
+  messagingSenderId: "945171900343",
+  appId: "1:945171900343:web:6e71786ec3f2a0de776a32",
+  measurementId: "G-WV9F9SGVBS"
+};
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
+const INITIAL_STATE = {
+  isLoading: true,
+  email: ''
+};
 const Home = () => {
-  // const {
-  //   REACT_APP_PWA_BASE_URL
-  // } = process.env;
+  const [state, setState] = useState(INITIAL_STATE);
+  const {
+    isLoading,
+    email
+  } = state;
+  const handleChange = e => {
+    e.preventDefault();
+    const {
+      name,
+      value
+    } = e.target;
+    setState(s => ({
+      ...s,
+      [name]: value
+    }));
+  };
+  const handleSubmit = async e => {
+    e.preventDefault();
+    let swalIcon = 'error';
+    let swalTitle = 'Sign Up Complete';
+    let swalHtml = `'${email}' is not a valid email address. Please enter a valid email address.`;
+    if (isEmailValid(email)) {
+      try {
+        const now = new Date();
+        const signUpsRef = firebase.database().ref('signUps');
+        const signUpsQuery = signUpsRef
+          .orderByChild('email')
+          .equalTo(email)
+          .limitToFirst(1);
+        const signUpsQueryRef = await signUpsQuery.once('value');
+        const signUpsQuerySnapshot = await signUpsQueryRef.val();
+        const signUps = Object
+          .keys(signUpsQuerySnapshot || {})
+          .map(key => signUpsQuerySnapshot[key]);
+        if (signUps.length === 0) {
+          await signUpsRef.push({
+            active: true,
+            created: now.toString(),
+            createdBy: 'Website',
+            email,
+            updated: now.toString(),
+            updatedBy: 'Website'
+          });
+          swalIcon = 'success';
+          swalHtml = 'Thank you signing up, please keep an eye out for our regular updates.';
+          setState(s => ({
+            ...s,
+            email: INITIAL_STATE.email
+          }));
+        } else {
+          swalHtml = `'${email}' has already signed up.`;
+        }
+      } catch (error) {
+        swalHtml = `Error: ${error}`;
+      }
+    }
+    customSwal({
+      icon: swalIcon,
+      title: swalTitle,
+      html: swalHtml,
+      confirmButtonText: 'OK'
+    });
+  };
+  useEffect(() => {
+    const pageInit = async () => {
+      setState(s => ({
+        ...s,
+        isLoading: false
+      }));
+    };
+    if (isLoading) {
+      pageInit();
+    }
+    return () => { };
+  }, [isLoading]);
   return (
     <>
       {/* Masthead */}
@@ -123,7 +247,8 @@ const Home = () => {
 
       {/* Opportunities */}
       <section className="opportunities text-center bg-light" style={{
-        paddingTop: '5rem'
+        paddingTop: '5rem',
+        paddingBottom: '5rem'
       }}>
         <div className="container">
           <h2 className="mb-5 text-success">Watch our journey...</h2>
@@ -142,19 +267,24 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      {/* <section className="call-to-action text-white text-center">
+      <section className="call-to-action text-white text-center">
         <div className="overlay"></div>
         <div className="container">
           <div className="row">
             <div className="col-xl-9 mx-auto">
-              <h2 className="mb-4">Be an early adopter and register to login now!</h2>
+              <h2 className="mb-4">Ready to be an early adopter? Sign up now!</h2>
             </div>
             <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <a className="btn btn-block btn-success p-3" href={`${REACT_APP_PWA_BASE_URL}/public/Login`} target="_blank" rel="noopener noreferrer"><h1>Let's go...</h1></a>
+              <form noValidate formNoValidate autoComplete="chrome-off" onSubmit={handleSubmit}>
+                <div className="form-row">
+                  <div className="col-12 col-md-9 mb-2 mb-md-0"><input className="form-control form-control-lg" type="email" placeholder="Enter your email..." name="email" value={email} onChange={handleChange} /></div>
+                  <div className="col-12 col-md-3"><button className="btn btn-block btn-lg btn-success" type="submit">Let's go!</button></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </>
   );
 };
