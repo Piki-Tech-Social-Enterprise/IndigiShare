@@ -2,9 +2,9 @@ import React from 'react';
 import fernImage from '../assets/img/fern-767-430.jpg';
 
 const Home = () => {
-  const {
-    REACT_APP_PWA_BASE_URL
-  } = process.env;
+  // const {
+  //   REACT_APP_PWA_BASE_URL
+  // } = process.env;
   return (
     <>
       {/* Masthead */}
@@ -123,18 +123,15 @@ const Home = () => {
 
       {/* Opportunities */}
       <section className="opportunities text-center bg-light" style={{
-        paddingTop: '5rem',
-        paddingBottom: '5rem'
+        paddingTop: '5rem'
       }}>
         <div className="container">
           <h2 className="mb-5 text-success">Watch our journey...</h2>
           <div className="row">
-            <div className="col">
+            <div className="col iframe-container">
               <iframe
                 title="IndigiShare"
-                width="645"
-                height="363"
-                src="//www.youtube.com/embed/NKsqVIpqtes"
+                src="https://youtube.com/embed/NKsqVIpqtes"
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -145,7 +142,7 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="call-to-action text-white text-center">
+      {/* <section className="call-to-action text-white text-center">
         <div className="overlay"></div>
         <div className="container">
           <div className="row">
@@ -157,7 +154,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

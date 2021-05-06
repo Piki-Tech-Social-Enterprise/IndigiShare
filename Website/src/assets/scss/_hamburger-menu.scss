@@ -75,7 +75,7 @@
 .menu.clicked span:before,
 .menu.clicked span:after {
   background-color: #ffffff;
-  right: 215px;
+  right: 185px;
 }
 .menu:hover {
   cursor: pointer;
@@ -88,7 +88,7 @@
   position: fixed;
   z-index: 20;
   top: 0;
-  right: 215px;
+  right: 0;
   height: 100%;
   max-width: 250px;
   width: 100%;

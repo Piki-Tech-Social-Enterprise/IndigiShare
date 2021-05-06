@@ -16,12 +16,11 @@ const NavagationBar = () => {
     setShowMenu(!showMenu);
   };
   const {
-    REACT_APP_WEB_NAME,
-    REACT_APP_PWA_BASE_URL
+    REACT_APP_WEB_NAME
   } = process.env;
   return (
     <nav className="navbar navbar-light bg-light static-top">
-      <div className="container text-center">
+      <div className="container-fluid text-center">
         <a className="navbar-brand" href="/">
           <img src={isLogo} height="30" className="d-inline-block align-top" alt={REACT_APP_WEB_NAME} />
           &nbsp;{REACT_APP_WEB_NAME}
@@ -29,7 +28,7 @@ const NavagationBar = () => {
         <span className="d-none d-lg-inline-block">
           &nbsp;#IndigiShare
         </span>
-        <a className="mx-sm-auto" href="https://www.hackthecrisis.nz" target="_blank" rel="noopener noreferrer">
+        <a className="mx-sm-auto d-none d-sm-inline-block" href="https://facebook.com/hackthecrisisNZ" target="_blank" rel="noopener noreferrer">
           <img alt="Hack the Crisis NZ 2020" src={hacktheCrisisNZLogo} style={{
             height: '50px'
           }} />
@@ -44,7 +43,6 @@ const NavagationBar = () => {
         </div>
         <nav id="nav" ref={navRef}>
           <ul className="main text-right">
-            <li><a href={`${REACT_APP_PWA_BASE_URL}/public/Login`} target="_blank" rel="noopener noreferrer">Register/Login</a></li>
             <li><a href="/Insights">Insights</a></li>
           </ul>
         </nav>
