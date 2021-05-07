@@ -28,7 +28,10 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run startLocal",
+        "install:clean": "run-s -sn removeNodeModules removePackageLockJsonFile npmInstall startLocal",
+        "removeNodeModules": "shx test -e ./node_modules && shx rm -rf ./node_modules && echo \"'node_modules' successfully removed\" || echo \"'node_modules' folder not found\"",
+        "removePackageLockJsonFile": "shx test -e ./package-lock.json && shx rm -rf package-lock.json && echo \"'package-lock.json' file successfully removed\" || echo \"'package-lock.json' file not found\"",
+        "npmInstall": "npm i",
         "process-sass": "run-s -sn compile-sass minify-sass map-sass",
         "compile-sass": "node-sass src/assets/scss/indigishare-platform.scss src/assets/css/indigishare-platform.css",
         "minify-sass": "node-sass src/assets/scss/indigishare-platform.scss src/assets/css/indigishare-platform.min.css --output-style compressed",
@@ -71,6 +74,7 @@
         "gulp-sass": "4.1.0",
         "merge-stream": "2.0.0",
         "node-sass": "5.0.0",
-        "npm-run-all": "^4.1.5"
+        "npm-run-all": "^4.1.5",
+        "shx": "^0.3.3"
     }
 }
