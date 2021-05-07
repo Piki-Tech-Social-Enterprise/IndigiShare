@@ -25,11 +25,11 @@
 .menu span,
 .menu span::before,
 .menu span::after {
+  @include bg-linear-gradient(127deg, $success, darken($warning, 15%));
   display: block;
   width: 26px;
   right: 0;
   height: 3px;
-  background-color: #28a745;
   outline: 1px solid transparent;
   -webkit-transition-property: background-color, -webkit-transform;
   -moz-transition-property: background-color, -moz-transform;
@@ -54,7 +54,7 @@
   width: 33px;
 }
 .menu.clicked span {
-  background-color: transparent;
+  background: transparent;
   right: 215px;
 }
 .menu.clicked span::before {
@@ -74,7 +74,7 @@
 }
 .menu.clicked span:before,
 .menu.clicked span:after {
-  background-color: #ffffff;
+  background: #ffffff;
   right: 185px;
 }
 .menu:hover {
@@ -84,7 +84,6 @@
 ========================================== */
 
 #nav {
-  background: #28a745;
   position: fixed;
   z-index: 20;
   top: 0;

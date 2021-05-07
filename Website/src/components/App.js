@@ -12,24 +12,26 @@ import ScrollToTop from './ScrollToTop';
 import NavigationBar from './NavigationBar';
 import LoadingOverlayModal from './LoadingOverlayModal';
 import Footer from './Footer';
-import '../assets/css/App.css';
-import '../assets/css/index.css';
 import '../assets/scss/indigishare-platform.scss?v=1.0.0';
 import '../assets/js/vendor/bootstrap/css/bootstrap.min.css';
 import '../assets/js/vendor/fontawesome-free/css/all.min.css';
 import '../assets/js/vendor/simple-line-icons/css/simple-line-icons.css';
 
-const HomePage = lazy(() => import('../pages/Home'));
-const TermsOfUsePage = lazy(() => import('../pages/TermsOfUse'));
-const PrivacyPolicyPage = lazy(() => import('../pages/PrivacyPolicy'));
-const InsightsPage = lazy(() => import('../pages/Insights'));
-const Global404Page = lazy(() => import('../pages/Global404Page'));
 const {
   home,
   termsOfUse,
   privacyPolicy,
-  insights
+  insights,
+  about,
+  contact
 } = Routes;
+const HomePage = lazy(() => import('../pages/Home'));
+const TermsOfUsePage = lazy(() => import('../pages/TermsOfUse'));
+const PrivacyPolicyPage = lazy(() => import('../pages/PrivacyPolicy'));
+const InsightsPage = lazy(() => import('../pages/Insights'));
+const AboutPage = lazy(() => import('../pages/About'));
+const ContactPage = lazy(() => import('../pages/Contact'));
+const Global404Page = lazy(() => import('../pages/Global404Page'));
 const App = () => {
   return (
     <>
@@ -49,6 +51,12 @@ const App = () => {
             </Route>
             <Route exact path={insights}>
               <InsightsPage />
+            </Route>
+            <Route exact path={about}>
+              <AboutPage />
+            </Route>
+            <Route exact path={contact}>
+              <ContactPage />
             </Route>
             <Route>
               <Global404Page />

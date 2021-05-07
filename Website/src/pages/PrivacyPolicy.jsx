@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
     <Container className="my-5" fluid>
       <Row>
         <Col xs={12}>
-          <h1 className="p-5 bg-success text-white text-center">Privacy Policy</h1>
+          <h1 className="p-5 bg-linear-gradient text-white text-center">Privacy Policy</h1>
           <p>We collect personal information from you, including information about your:</p>
           <ul>
             <li>Email Address</li>
