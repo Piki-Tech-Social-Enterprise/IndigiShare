@@ -7,7 +7,6 @@ import {
   Row,
   Col,
   Form,
-  Label,
   Input,
   Button
 } from 'reactstrap';
