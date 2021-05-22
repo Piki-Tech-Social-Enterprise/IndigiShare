@@ -31,7 +31,7 @@
     "sweetalert2-react": "^0.8.3"
   },
   "scripts": {
-    "updateDependencies": "ncu -x node-sass -u && npm i",
+    "updateDependencies": "ncu -x node-sass -u --timeout 180000 && npm i",
     "start": "npm run startLocal",
     "start:og": "react-scripts start",
     "build": "react-scripts build",

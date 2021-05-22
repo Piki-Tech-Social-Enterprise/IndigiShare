@@ -22,7 +22,7 @@
         "sweetalert2-react-content": "^4.0.1"
     },
     "scripts": {
-        "updateDependencies": "ncu -x node-sass -u && npm i",
+        "updateDependencies": "ncu -x node-sass -u --timeout 180000 && npm i",
         "start": "npm run startLocal",
         "start:og": "react-scripts start",
         "build": "react-scripts build",
