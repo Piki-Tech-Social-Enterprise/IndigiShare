@@ -27,7 +27,7 @@ const AuthNavbar = props => {
     await props.firebase.signOut();
   };
   return (
-    <Navbar fluid>
+    <Navbar>
       <Navbar.Brand>
         <a href={window.location.href}>{props.brandText}</a>
       </Navbar.Brand>
