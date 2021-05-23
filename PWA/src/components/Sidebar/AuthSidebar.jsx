@@ -13,7 +13,7 @@ import isLogo from 'assets/img/islogo-760x760.png';
 const AuthSidebar = props => {
   const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
   const activeRoute = routeName => {
-    return props.location.pathname.indexOf(routeName) > -1 && 'active';
+    return props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
   };
   const updateDimensions = () => {
     setWindowInnerWidth(window.innerWidth);

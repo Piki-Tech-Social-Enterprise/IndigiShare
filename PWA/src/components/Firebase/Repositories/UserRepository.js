@@ -10,8 +10,28 @@ class UserRepository extends BaseRepository {
     this.db = firebaseApp.database();
   }
 
-  getDbUsers = async () => {
-    return await this.db.ref('users');
+  getDbUsers = () => {
+    return this.db.ref('users');
+  }
+
+  getDbUsersAsArray = async (includeInactive = false, childName = 'active', childValue = true) => {
+    const existingDbUsers = this.getDbUsers();
+    const dbUsersRef = !includeInactive
+      ? await existingDbUsers
+        .orderByChild(childName)
+        .equalTo(childValue)
+        .once('value')
+      : await existingDbUsers
+        .orderByChild(childName)
+        .once('value');
+    const dbUsers = await dbUsersRef.val();
+    const dbUsersAsArray = [];
+    if (dbUsers) {
+      Object.keys(dbUsers).map(key =>
+        dbUsersAsArray.push(dbUsers[key])
+      );
+    }
+    return dbUsersAsArray.filter(u => includeInactive || u.active);
   }
 
   getDbUser = async uid => {

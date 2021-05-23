@@ -28,6 +28,13 @@ const routes = [
     layout: "/auth"
   },
   {
+    path: "/Users",
+    name: "Users",
+    icon: "pe-7s-user",
+    component: lazy(() => import('views/Auth/UsersView')),
+    layout: "/auth"
+  },
+  {
     path: "/Login",
     name: "Login",
     icon: "",
