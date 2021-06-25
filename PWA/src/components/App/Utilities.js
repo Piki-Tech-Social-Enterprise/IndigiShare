@@ -347,10 +347,10 @@ const getSize = imageResize => {
   return size;
 };
 const getImageURLToUse = (imageResize, imageURL) => {
-  let imageURLToUse = imageURL;
+  let imageURLToUse = imageURL || '';
   const size = getSize(imageResize); // debugger;
-  const bucketFolder = dirname(imageURL);
-  const fileName = imageURL.split('/').pop();
+  const bucketFolder = dirname(imageURLToUse);
+  const fileName = imageURLToUse.split('/').pop();
   const ext = fileName.split('.').pop();
   const imgName = fileName.replace(`.${ext}`, '');
   if (bucketFolder && imgName) {

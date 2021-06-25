@@ -1,45 +1,160 @@
 import React, {
-  useState
+  useState,
+  createRef,
+  useEffect
 } from 'react';
 import {
-  Navbar
-} from 'react-bootstrap';
-// import AuthNavbarLinks from './AuthNavbarLinks';
+  withFirebase
+} from '../Firebase/Contexts/firebaseContext';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Container
+} from 'reactstrap';
+import {
+  useWindowEvent
+} from 'components/App/Utilities';
+import authRoutes from '../../authRoutes';
 
 const AuthNavbar = props => {
-  const [sidebarExists, setSidebarExists] = useState(false);
-  const mobileSidebarToggle = async e => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [color, setColor] = useState('transparent');
+  const {
+    firebase,
+    history
+  } = props;
+  const sidebarToggleRef = createRef();
+  const handleNavbarToggleClick = () => {
+    setColor(isOpen
+      ? 'transparent'
+      : 'white');
+    setIsOpen(!isOpen);
+  };
+  const dropdownToggle = async e => {
     e.preventDefault();
-    if (!sidebarExists) {
-      setSidebarExists(!sidebarExists);
-    }
-    document.documentElement.classList.toggle("nav-open");
-    var node = document.createElement("div");
-    node.id = "bodyClick";
-    node.onclick = function () {
-      this.parentElement.removeChild(this);
-      document.documentElement.classList.toggle("nav-open");
+    setDropdownOpen(!dropdownOpen);
+  };
+  const getBrand = () => { // debugger;
+    const {
+      pathname
+    } = window.location;
+    const pathnameParts = pathname.split('/');
+    const pathnameId = pathnameParts.pop();
+    let brand = 'Admin Dashboard';
+    authRoutes.map(authRoute => {
+      const authRoutePathId = authRoute.path.split('/').pop();
+      const authRoutePath = pathnameParts.length === 2
+        ? authRoute.path
+        : authRoute.path.replace(authRoutePathId, pathnameId);
+      const routePathName = `/auth${authRoutePath}`
+      if (routePathName === pathname) {
+        brand = authRoute.name;
+      }
+      return null;
+    });
+    return brand;
+  };
+  const openSidebar = () => {
+    document.documentElement.classList.toggle('nav-open');
+    sidebarToggleRef.current.classList.toggle('toggled');
+  };
+  const updateColor = () => {
+    setColor(window.innerWidth < 993 && isOpen
+      ? 'white'
+      : 'transparent');
+  };
+  const handleViewProfileClick = async e => {
+    e.preventDefault();
+    history.push('/auth/Profile');
+  };
+  const handleLogoutClick = async e => {
+    e.preventDefault();
+    await firebase.signOut();
+    history.push('/');
+  };
+  useWindowEvent('resize', updateColor);
+  useEffect(() => {
+    const {
+      classList: sidebarToggleCssClasses
+    } = sidebarToggleRef.current;
+    return () => {
+      if (
+        window.innerWidth < 993 &&
+        props.history.location.pathname !== props.location.pathname &&
+        document.documentElement.className.indexOf('nav-open') !== -1
+      ) {
+        document.documentElement.classList.toggle('nav-open');
+        sidebarToggleCssClasses.toggle('toggled');
+      }
     };
-    document.body.appendChild(node);
-  };
-  const handleLogoutOnClick = async e => {
-    e.preventDefault();
-    await props.firebase.signOut();
-  };
+  }, [props, sidebarToggleRef]);
   return (
-    <Navbar>
-      <Navbar.Brand>
-        <a href={window.location.href}>{props.brandText}</a>
-      </Navbar.Brand>
-      <Navbar.Toggle onClick={mobileSidebarToggle} />
-      {/* <Navbar.Collapse>
-        <AuthNavbarLinks />
-      </Navbar.Collapse> */}
-      <div className="ml-auto">
-        <a href="#InddigiShare" onClick={handleLogoutOnClick}>Logout</a>
-      </div>
-    </Navbar >
+    <Navbar
+      color={
+        props.location.pathname.indexOf('full-screen-maps') !== -1
+          ? 'white'
+          : color
+      }
+      expand='lg'
+      className={
+        props.location.pathname.indexOf('full-screen-maps') !== -1
+          ? 'navbar-absolute fixed-top'
+          : 'navbar-absolute fixed-top ' +
+          (color === 'transparent'
+            ? 'navbar-transparent '
+            : '')
+      }
+    >
+      <Container fluid>
+        <div className='navbar-wrapper'>
+          <div className='navbar-toggle'>
+            <button type='button' ref={sidebarToggleRef} className='navbar-toggler' onClick={openSidebar}>
+              <span className='navbar-toggler-bar bar1' />
+              <span className='navbar-toggler-bar bar2' />
+              <span className='navbar-toggler-bar bar3' />
+            </button>
+          </div>
+          <NavbarBrand href='/'>{getBrand()}</NavbarBrand>
+        </div>
+        <NavbarToggler onClick={handleNavbarToggleClick}>
+          <span className='navbar-toggler-bar navbar-kebab' />
+          <span className='navbar-toggler-bar navbar-kebab' />
+          <span className='navbar-toggler-bar navbar-kebab' />
+        </NavbarToggler>
+        <Collapse isOpen={isOpen} navbar className='justify-content-end'>
+          <Nav navbar>
+            <Dropdown nav isOpen={dropdownOpen} toggle={dropdownToggle}>
+              <DropdownToggle caret nav>
+                <i className='now-ui-icons location_world' />
+                <p>
+                  <span className='d-lg-none d-md-block'>Account</span>
+                </p>
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem tag="a" href="#indigishare" onClick={handleViewProfileClick}>
+                  <i className='now-ui-icons users_circle-08' />
+                  <p>Edit Profile</p>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem tag="a" href="#indigishare" onClick={handleLogoutClick}>
+                  <i className='now-ui-icons sport_user-run' />
+                  <p>Logout</p>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default AuthNavbar;
+export default withFirebase(AuthNavbar);

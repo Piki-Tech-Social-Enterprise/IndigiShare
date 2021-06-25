@@ -1,0 +1,13 @@
+@mixin bg-linear-gradient($degrees, $color1, $color2) {
+  background: $color1;
+  background: -webkit-linear-gradient($degrees, $color1 , $color2);
+  background: -o-linear-gradient($degrees, $color1, $color2);
+  background: -moz-linear-gradient($degrees, $color1, $color2);
+  background: linear-gradient($degrees, $color1 , $color2);
+}
+
+@mixin text-linear-gradient($degrees, $color1, $color2) {
+  @include bg-linear-gradient($degrees, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

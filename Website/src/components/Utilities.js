@@ -3,6 +3,15 @@ import withReactContent from 'sweetalert2-react-content';
 const isEmptyString = value => value === '';
 const isNullOrEmpty = value => value == null || isEmptyString(value);
 const isEmailValid = email => !isNullOrEmpty(email) && email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+const isTrueOrFalse = value => {
+  const valueAsLowercaseString = (value || '').toString().toLowerCase();
+  return valueAsLowercaseString === 'true' || valueAsLowercaseString === 'false';
+};
+const isBoolean = (value, expectedValue = undefined) =>
+  !isNullOrEmpty(value) &&
+  (typeof value === 'boolean' || isTrueOrFalse(value)) &&
+  (isNullOrEmpty(expectedValue) || value.toString().toLowerCase() === expectedValue.toString().toLowerCase());
+const isNumber = value => value && !isNaN(value);
 const INITIAL_CUSTOMSWAL_OPTIONS = {
   buttonsStyling: false,
   backdrop: 'rgba(0, 0, 0, 0.85)',
@@ -36,4 +45,6 @@ export {
   isEmailValid,
   customSwalMixin,
   customSwal,
+  isBoolean,
+  isNumber
 }

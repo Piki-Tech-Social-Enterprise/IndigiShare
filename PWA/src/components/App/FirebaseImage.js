@@ -5,7 +5,7 @@ import React, {
 import {
   withFirebase
 } from 'components/Firebase';
-import noImageAvailable from 'assets/img/no-image-available.svg';
+import noImageAvailable from 'assets/img/indigishare/no-image-available.svg';
 // import LoadingIcon from './LoadingIcon';
 import PropTypes from 'prop-types';
 import {

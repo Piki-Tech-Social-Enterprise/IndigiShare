@@ -17,6 +17,9 @@ import {
   Form,
   CardHeader,
   CardBody,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
   Input,
   CardFooter,
   Button
@@ -26,6 +29,8 @@ import isLogo from 'assets/img/islogo-760x760.png';
 
 const LoginView = props => {
   const defaultDisplayTitle = 'Login Failed';
+  const [firstFocus, setFirstFocus] = useState(false);
+  const [lastFocus, setLastFocus] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,8 +51,7 @@ const LoginView = props => {
       try {
         setIsSubmitting(true);
         await props.firebase.signInWithEmailAndPassword(email, password);
-        setIsSubmitting(false);
-        props.history.push('/auth/Dashboard');
+        props.history.push('/auth');
       } catch (error) {
         displayMessage = error.message;
       }
@@ -70,9 +74,9 @@ const LoginView = props => {
     <AuthUserContext.Consumer>
       {authUser =>
         authUser && !!authUser.active
-          ? <Redirect to="/auth/Dashboard" />
+          ? <Redirect to="/auth" />
           : <div className="login-view bg-panel text-center">
-            <Card className="card-login card-plain m-auto py-3">
+            <Card className="card-login card-plain">
               <Form className="form" onSubmit={handleSubmit} noValidate>
                 <CardHeader className="text-center">
                   <div className="logo-container">
@@ -81,45 +85,64 @@ const LoginView = props => {
                   {REACT_APP_PWA_NAME} v{REACT_APP_PWA_BUILD_VERSION}
                 </CardHeader>
                 <CardBody className="pb-0">
-                  <Input
-                    className="my-3 bg-transparent"
-                    placeholder="Email Address"
-                    type="email"
-                    value={email}
-                    onChange={async e => setEmail(e.target.value)}
-                    disabled={isSubmitting}
-                  />
-                  <Input
-                    className="my-3 bg-transparent"
-                    placeholder="Password"
-                    type="password"
-                    value={password}
-                    onChange={async e => setPassword(e.target.value)}
-                    disabled={isSubmitting}
-                  />
+                  <InputGroup className={`no-border input-lg${(firstFocus && ' input-group-focus') || ''}`}>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="text-white now-ui-icons ui-1_email-85"></i>
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Email Address"
+                      type="email"
+                      onFocus={() => setFirstFocus(true)}
+                      onBlur={() => setFirstFocus(false)}
+                      value={email}
+                      onChange={async e => setEmail(e.target.value)}
+                      disabled={isSubmitting}
+                    ></Input>
+                  </InputGroup>
+                  <InputGroup className={`no-border input-lg${(lastFocus && ' input-group-focus') || ''}`}>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="now-ui-icons ui-1_lock-circle-open"></i>
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Password"
+                      type="password"
+                      onFocus={() => setLastFocus(true)}
+                      onBlur={() => setLastFocus(false)}
+                      value={password}
+                      onChange={async e => setPassword(e.target.value)}
+                      disabled={isSubmitting}
+                    ></Input>
+                  </InputGroup>
                 </CardBody>
                 <CardFooter className="text-center pt-0">
                   <Button
                     block
-                    className="my-2 bg-success text-white"
-                    color="success"
-                    size="md"
+                    className="btn-round my-2"
+                    color="primary"
+                    size="lg"
                     type="submit"
                     disabled={isSubmitting}
                   >
                     Login
                   </Button>
-                  <Button
-                    block
-                    className="my-2 bg-primary text-white"
-                    color="primary"
-                    size="md"
-                    type="button"
-                    href="/public/Register"
-                    disabled={isSubmitting}
-                  >
-                    Register?
-                  </Button>
+                  <div className="pull-left">
+                    <h6>
+                      <a className="link" href="/public/Register">
+                        Register?
+                      </a>
+                    </h6>
+                  </div>
+                  <div className="pull-right">
+                    <h6 className="link">
+                      <a className="link" href="/public/ForgotPassword">
+                        Forgot Password?
+                      </a>
+                    </h6>
+                  </div>
                 </CardFooter>
                 <SweetAlert show={show} title={title} text={text} onConfirm={() => setSweetAlertStates()} />
               </Form>

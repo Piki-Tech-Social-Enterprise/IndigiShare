@@ -1,62 +1,79 @@
 import React, {
-  useState
+  createRef,
+  useEffect
 } from 'react';
 import {
   NavLink
 } from 'react-router-dom';
 import {
-  useWindowEvent
-} from 'components/App/Utilities';
-import AuthNavbarLinks from '../Navbars/AuthNavbarLinks';
-import isLogo from 'assets/img/islogo-760x760.png';
+  Nav
+} from 'reactstrap';
+import PerfectScrollbar from 'perfect-scrollbar';
+import logo from 'assets/img/indigishare/indigishare-logo-512x512.png';
 
 const AuthSidebar = props => {
-  const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
+  const sidebarRef = createRef();
   const activeRoute = routeName => {
-    return props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
+    return props.location.pathname.indexOf(routeName) > -1
+      ? 'active'
+      : '';
   };
-  const updateDimensions = () => {
-    setWindowInnerWidth(window.innerWidth);
-  };
-  useWindowEvent('resize', updateDimensions);
-  const sidebarBackground = {
-    backgroundImage: "url(" + props.image + ")"
-  };
-  const {
-    REACT_APP_PWA_NAME
-  } = process.env;
+  useEffect(() => {
+    const {
+      platform
+    } = navigator;
+    const platformWin = 'Win';
+    let perfectScrollbar;
+    const {
+      classList: bodyCssClasses
+    } = document.body;
+    const perfectScrollbarOn = 'perfect-scrollbar-on';
+    if (platform.indexOf(platformWin) > -1) {
+      perfectScrollbar = new PerfectScrollbar(sidebarRef.current, {
+        suppressScrollX: true,
+        suppressScrollY: false
+      });
+      bodyCssClasses.toggle(perfectScrollbarOn);
+    }
+    return () => {
+      if (platform.indexOf(platformWin) > -1) {
+        perfectScrollbar.destroy();
+      }
+    };
+  }, [props, sidebarRef]);
   return (
-    <div id="sidebar" className="sidebar" data-color={props.color} data-image={props.image}>
-      <div className="sidebar-background" style={sidebarBackground} />
-      <div className="logo">
-        <div className="logo-img">
-          <img src={isLogo} alt="logo_image" style={{
-            width: '34px'
-          }} />
-        </div>
-        <span className="h5">{REACT_APP_PWA_NAME}</span>
+    <div className="sidebar" data-color={props.backgroundColor}>
+      <div className="bg-image" />
+      <div className="logo text-white">
+          <div className="logo-img" style={{
+            display: 'inline-block',
+            width: '1.5rem'
+          }}>
+            <img src={logo} alt="react-logo" />
+          </div>
+          <span className="p-3 h6">IndigiShare</span>
       </div>
-      <div className="sidebar-wrapper">
-        <ul className="nav">
-          {windowInnerWidth <= 991 ? <AuthNavbarLinks /> : null}
-          {props.routes.map((prop, key) => {
-            if (!prop.redirect && prop.layout === '/auth')
-              return (
-                <li className={activeRoute(prop.layout + prop.path)} key={key} style={{
-                  width: '100%'
-                }}>
-                  <NavLink to={prop.layout + prop.path} className="nav-link" activeClassName="active">
-                    <i className={prop.icon} />
-                    <p>{prop.name}</p>
-                  </NavLink>
-                </li>
-              );
-            return null;
+      <div className="sidebar-wrapper" ref={sidebarRef}>
+        <Nav>
+          {props.routes.map((route, key) => {
+            if (route.redirect || route.excludeFromSidebar) return null;
+            const { layout, path, iconLibrary, icon, name } = route;
+            const routePath = layout + path;
+            const activeRouteClassName = `${activeRoute(routePath)}`;
+            const iconClassNames = `${iconLibrary || 'now-ui-icons'} ${icon}`;
+            return (
+              <li className={activeRouteClassName} key={key}>
+                <NavLink to={routePath} className="nav-link" activeClassName="active">
+                  <i className={iconClassNames} />
+                  <p>{name}</p>
+                </NavLink>
+              </li>
+            );
           })}
-        </ul>
+        </Nav>
       </div>
     </div>
   );
-}
+};
 
 export default AuthSidebar;

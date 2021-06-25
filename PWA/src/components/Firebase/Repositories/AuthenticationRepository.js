@@ -8,11 +8,23 @@ import {
   UserRepository,
   StorageRepository
 } from '../Repositories';
+import {
+  isBoolean,
+  isNumber
+} from '../../App/Utilities';
 
 class AuthenticationRepository extends BaseRepository {
   constructor(firebaseApp) {
     super();
     this.auth = firebaseApp.auth();
+    const {
+      REACT_APP_USE_EMULATOR,
+      REACT_APP_ATH_PORT
+    } = process.env;
+    if (isBoolean(REACT_APP_USE_EMULATOR, true) && isNumber(REACT_APP_ATH_PORT)) {
+      this.auth.useEmulator(`http://localhost:${REACT_APP_ATH_PORT}`);
+      console.log(`AuthenticationRepository.auth.useEmulator is set to: 'localhost:${REACT_APP_ATH_PORT}'`);
+    }
     this.userRepository = new UserRepository(firebaseApp);
     this.emailAuthProvider = firebaseApp.auth.EmailAuthProvider;
     this.storageRepository = new StorageRepository(firebaseApp);
@@ -38,10 +50,12 @@ class AuthenticationRepository extends BaseRepository {
       createdBy: uid,
       displayName: displayName || '',
       email: email,
+      emailVerified: false,
+      isNew: true,
       photoURL: '',
       providerData: providerData,
       roles: {
-        role
+        [role]: role
       },
       uid: uid,
       updated: now.toString(),
@@ -95,7 +109,7 @@ class AuthenticationRepository extends BaseRepository {
           showCancelButton: true,
           footer: 'Need to verify your credentials before continuing...'
         });
-        if (!!result.value) {
+        if (result.isConfirmed) {
           return await this.reauthenticate(result.value);
         }
       }
@@ -103,7 +117,7 @@ class AuthenticationRepository extends BaseRepository {
       errorMessage = error.message;
     }
     if (errorMessage) {
-      console.log('Get User Credentials Error: ' + errorMessage);
+      console.log('Get User Credentials Error: ', errorMessage);
       return errorMessage;
     }
   };
@@ -144,7 +158,7 @@ class AuthenticationRepository extends BaseRepository {
               });
               await this.signOut();
               await swal.fire({
-                type: 'success',
+                icon: 'success',
                 title: 'Change Email Successful',
                 text: 'Please verify your email to login.'
               });
@@ -166,11 +180,11 @@ class AuthenticationRepository extends BaseRepository {
     }
     if (errorMessage) {
       swal.fire({
-        type: 'error',
+        icon: 'error',
         title: 'Change Email Error',
         html: errorMessage
       });
-      console.log('Change Email Error: ' + errorMessage);
+      console.log('Change Email Error: ', errorMessage);
     }
   };
 
@@ -209,7 +223,7 @@ class AuthenticationRepository extends BaseRepository {
             await this.updatePassword(newPassword);
             await this.signOut();
             await swal.fire({
-              type: 'success',
+              icon: 'success',
               title: 'Change Password Successful',
               text: 'Please login again to confirm your new password.'
             });
@@ -232,11 +246,11 @@ class AuthenticationRepository extends BaseRepository {
     }
     if (errorMessage) {
       swal.fire({
-        type: 'error',
+        icon: 'error',
         title: 'Change Password Error',
         html: errorMessage
       });
-      console.log('Change Password Error: ' + errorMessage);
+      console.log('Change Password Error: ', errorMessage);
     }
   };
 
@@ -253,14 +267,38 @@ class AuthenticationRepository extends BaseRepository {
             undefinedRole
           };
         }
-        authUser = {
-          uid: authUser.uid,
-          email: authUser.email,
-          emailVerified: authUser.emailVerified,
-          providerData: authUser.providerData,
-          ...dbUser
+        // console.log(`{ dbUser, authUser }: ${JSON.stringify({ dbUser, authUser }, null, 2)}`);
+        const {
+          uid: dbUserUid,
+          emailVerified: dbUserEmailVerified,
+          photoURL: dbUserPhotoURL,
+          ...dbUserRest
+        } = dbUser;
+        const {
+          uid: authUserUid,
+          email: authUserEmail,
+          emailVerified: authUserEmailVerified,
+          providerData: authUserProviderData,
+          photoURL: authUserPhotoURL
+        } = authUser;
+        const combinedUser = {
+          uid: authUserUid,
+          email: authUserEmail,
+          emailVerified: authUserEmailVerified,
+          providerData: authUserProviderData,
+          photoURL: authUserPhotoURL,
+          ...dbUserRest
         };
-        next(authUser);
+        if (!dbUserEmailVerified && authUserEmailVerified) {
+          await this.userRepository.saveDbUser({
+            emailVerified: true,
+            photoURL: dbUserPhotoURL || authUserPhotoURL || '',
+            uid: dbUserUid
+          });
+          combinedUser.emailVerified = true;
+        }
+        // console.log(`combinedUser: ${JSON.stringify(combinedUser, null, 2)}`);
+        next(combinedUser);
       } else {
         fallback();
       }
@@ -269,11 +307,11 @@ class AuthenticationRepository extends BaseRepository {
 
   deleteAccount = async e => {
     e.preventDefault();
-    let result = null,
-      errorMessage = null;
+    let result = null;
+    let errorMessage = null;
     try {
       result = await swal.fire({
-        type: 'warning',
+        icon: 'warning',
         title: 'Are you sure?',
         text: 'You won\'t be able to undo this!',
         showCancelButton: true,
@@ -282,107 +320,48 @@ class AuthenticationRepository extends BaseRepository {
           cancelButton: 'btn btn-outline-link'
         }
       });
-      if (!!result.value) {
-        const user = this.auth.currentUser,
-          providerId = user.providerData[0].providerId,
-          userCredentials = await this.getUserCredentials(providerId);
-        let extRemove = null;
-        if (
-          userCredentials &&
-          typeof userCredentials !== 'string' &&
-          userCredentials.user
-        ) {
-          if (providerId === 'password' && userCredentials.user.photoURL) {
-            try {
-              extRemove = userCredentials.user.photoURL
-                .split('.')
-                .slice(0, -1)
-                .join('.');
-              console.log(extRemove);
-              const imageJPG = extRemove + '.jpg',
-                imagePNG = extRemove + '.png',
-                imageWEBP = extRemove + '.webp',
-                imageJPEG = extRemove + '.jpeg',
-                imageTIFF = extRemove + '.tiff',
-                imageBMP = extRemove + '.bmp',
-                imageSVG = extRemove + '.svg',
-                imagePDF = extRemove + '.pdf',
-                imageRAW = extRemove + '.raw',
-                imageTGA = extRemove + '.tga',
-                imageEPS = extRemove + '.eps',
-                imageGIF = extRemove + '.gif';
-              console.log(
-                imageJPG &&
-                imagePNG &&
-                imageWEBP &&
-                imageJPEG &&
-                imageTIFF &&
-                imageBMP &&
-                imageSVG &&
-                imagePDF &&
-                imageRAW &&
-                imageTGA &&
-                imageEPS &&
-                imageGIF
-              );
-              try {
-                var allImagePaths = [
-                  imageJPG,
-                  imagePNG,
-                  imageWEBP,
-                  imageJPEG,
-                  imageTIFF,
-                  imageBMP,
-                  imageSVG,
-                  imagePDF,
-                  imageRAW,
-                  imageTGA,
-                  imageEPS,
-                  imageGIF
-                ],
-                  theArray = [];
-                allImagePaths.map(async string => {
-                  console.log(`Over and Over${string}`);
-                  theArray.push(string);
-                  try {
-                    await this.storageRepository.deleteStorageFile(string);
-                  } catch (error) {
-                    console.log(error.message);
-                  }
-                  return string;
-                });
-              } catch (error) {
-                console.log(`There is an error`);
-              } finally {
-                console.log('Finished removing all images');
-              }
-            } catch (error) {
-              console.log(`Image Removal Process:`);
-            }
+      if (result.isConfirmed) {
+        const {
+          currentUser
+        } = this.auth;
+        const {
+          providerId
+        } = currentUser.providerData[0];
+        const userCredentials = await this.getUserCredentials(providerId);
+        if (typeof userCredentials === 'string') {
+          errorMessage = userCredentials;
+        } else {
+          const {
+            user
+          } = userCredentials;
+          const {
+            uid
+          } = user;
+          if (providerId === 'password') {
+            const userPhotoFolderUrl = `/images/users/${uid}`;
+            const storageFiles = await this.storageRepository.getStorageFiles(userPhotoFolderUrl);
+            await Promise.all(storageFiles.items.map(async storageFileItem => await storageFileItem.delete()));
           }
-          await this.userRepository.deleteDbUser(userCredentials.user.uid);
-          await userCredentials.user.delete();
+          await this.userRepository.deleteDbUser(uid);
+          await user.delete();
           await this.signOut();
           swal.fire({
-            type: 'success',
+            icon: 'success',
             title: 'Delete Account Successful',
             text: 'Your account has been deleted.'
           });
-        } else {
-          errorMessage = userCredentials;
         }
       }
     } catch (error) {
       errorMessage = error.message;
-      console.log(`Error: ${errorMessage}`);
+      console.log(`Delete Account Error: ${errorMessage}`);
     }
     if (errorMessage) {
       swal.fire({
-        type: 'error',
+        icon: 'error',
         title: 'Delete Account Error',
         html: errorMessage
       });
-      console.log('Delete Account Error: ' + errorMessage);
     }
   };
 }

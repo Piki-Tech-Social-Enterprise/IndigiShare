@@ -1,5 +1,4 @@
 import React, {
-  useEffect,
   Suspense
 } from 'react';
 import {
@@ -10,45 +9,12 @@ import {
   Container,
   Col
 } from 'reactstrap';
-import routes from 'routes.js';
 import LoadingOverlayModal from 'components/App/LoadingOverlayModal';
+import publicRoutes from 'publicRoutes';
 
 const PublicLayout = props => {
-  const getRoutes = routes => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/public") {
-        // console.log(`prop: ${JSON.stringify(prop)}`);
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={props => (
-              <prop.component
-                {...props}
-              />
-            )}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
-  };
-  useEffect(() => {
-    if (
-      window.innerWidth < 993 &&
-      props.history.location.pathname !== props.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
-    ) {
-      document.documentElement.classList.toggle("nav-open");
-    }
-    if (props.history.action === "PUSH") {
-      document.documentElement.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-    }
-  }, [props]);
   return (
-    <div className="page-header clear-filter">
+    <div className="page-header clear-filter" filter-color="black">
       <div
         className="page-header-image"
         style={{
@@ -57,11 +23,22 @@ const PublicLayout = props => {
       ></div>
       <div className="content">
         <Container>
-          <Col className="ml-auto mr-auto py-3 py-lg-5" md="8">
+          <Col className="mx-auto py-3 py-lg-5" md="8">
             <div className="p-3">
               <Switch>
                 <Suspense fallback={<LoadingOverlayModal />}>
-                  {getRoutes(routes)}
+                  {publicRoutes.map((prop, key) => {
+                    const {
+                      layout,
+                      path,
+                      component
+                    } = prop;
+                    const routePath = layout + path;
+                    console.log(`prop: ${JSON.stringify(prop, null, 2)}`);
+                    return (
+                      <Route path={routePath} component={component} key={key} {...props} />
+                    );
+                  })}
                 </Suspense>
               </Switch>
             </div>
@@ -70,6 +47,6 @@ const PublicLayout = props => {
       </div>
     </div>
   );
-}
+};
 
 export default PublicLayout;

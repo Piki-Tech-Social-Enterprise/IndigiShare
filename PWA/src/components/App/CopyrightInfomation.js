@@ -2,29 +2,7 @@ import React from 'react';
 import {
   Link
 } from 'react-router-dom';
-import {
-  FontAwesomeIcon
-} from '@fortawesome/react-fontawesome';
 
-const CopyrightYear = props => {
-  const {
-    text,
-    startYear
-  } = props;
-  const today = new Date();
-  const thisYear = today.getFullYear();
-  const years = [
-    startYear
-  ];
-  if (thisYear > Number(startYear)) {
-    years.push(thisYear);
-  }
-  return (
-    <>
-      {text}<br className="d-sm-none" /> &copy; {years.join('-')}
-    </>
-  );
-};
 const AuthFooterLink = props => {
   const {
     to,
@@ -45,11 +23,23 @@ const AuthTermsLink = () => {
     <AuthFooterLink to="/public/TermsOfUse" title="Terms of Use" text="Terms" />
   );
 };
-const GitHubLink = () => {
+const CopyrightYear = props => {
+  const {
+    text,
+    startYear
+  } = props;
+  const today = new Date();
+  const thisYear = today.getFullYear();
+  const years = [
+    startYear
+  ];
+  if (thisYear > Number(startYear)) {
+    years.push(thisYear);
+  }
   return (
-    <a href="https://github.com/Piki-Tech-Social-Enterprise/IndigiShare" target="_blank" rel="noopener noreferrer" title="IndigiShare on GitHub">
-      <FontAwesomeIcon icon={['fab', 'github']} color="default" />
-    </a>
+    <>
+      {text} &copy; {years.join('-')} All rights reserved.
+    </>
   );
 };
 const CopyrightInfomation = () => {
@@ -59,7 +49,7 @@ const CopyrightInfomation = () => {
   } = process.env;
   return (
     <div className="copyright">
-      <CopyrightYear text={`${REACT_APP_PWA_NAME} v${REACT_APP_PWA_BUILD_VERSION}`} startYear="2020" /> <AuthPrivacyLink /> &amp; <AuthTermsLink />&nbsp;<GitHubLink />
+      <CopyrightYear text={`${REACT_APP_PWA_NAME} v${REACT_APP_PWA_BUILD_VERSION}`} startYear="2020" /> <AuthPrivacyLink /> &amp; <AuthTermsLink />
     </div>
   )
 }

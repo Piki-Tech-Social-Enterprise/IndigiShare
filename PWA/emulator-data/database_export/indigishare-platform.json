@@ -1,0 +1,36 @@
+{
+  "signUps": {
+    "-Md0mmPVMjoTLIFU5kOP": {
+      "active": true,
+      "created": "Fri Jun 25 2021 18:11:10 GMT+1200 (New Zealand Standard Time)",
+      "createdBy": "Website",
+      "email": "John.Shortland@MaiMarae.nz",
+      "updated": "Fri Jun 25 2021 18:11:10 GMT+1200 (New Zealand Standard Time)",
+      "updatedBy": "Website"
+    }
+  },
+  "users": {
+    "9VHhz8oUJkeR6I1FULDOVxsWzft6": {
+      "active": true,
+      "created": "Fri Jun 25 2021 16:41:28 GMT+1200 (New Zealand Standard Time)",
+      "createdBy": "9VHhz8oUJkeR6I1FULDOVxsWzft6",
+      "displayName": "John Shortland - System Admin",
+      "email": "John.Shortland@PikiTech.co.nz",
+      "emailVerified": true,
+      "photoURL": "",
+      "providerData": [
+        {
+          "email": "john.shortland@pikitech.co.nz",
+          "providerId": "password",
+          "uid": "john.shortland@pikitech.co.nz"
+        }
+      ],
+      "roles": {
+        "systemAdminRole": "systemAdminRole"
+      },
+      "uid": "9VHhz8oUJkeR6I1FULDOVxsWzft6",
+      "updated": "Fri Jun 25 2021 16:41:28 GMT+1200 (New Zealand Standard Time)",
+      "updatedBy": ""
+    }
+  }
+}

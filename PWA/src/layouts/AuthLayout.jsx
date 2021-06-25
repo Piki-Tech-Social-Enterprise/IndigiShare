@@ -1,142 +1,164 @@
 import React, {
+  useState,
   createRef,
   useEffect,
   Suspense
 } from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+//import PerfectScrollbar from 'perfect-scrollbar'; to fix
+import LoadingOverlayModal from 'components/App/LoadingOverlayModal';
 import AuthSidebar from 'components/Sidebar/AuthSidebar';
 import AuthNavbar from 'components/Navbars/AuthNavbar';
 import AuthFooter from 'components/Footer/AuthFooter';
-import { style } from 'variables/Variables.jsx';
-import routes from 'routes.js';
-import image from 'assets/img/fern-200x673.jpg';
-import LoadingOverlayModal from 'components/App/LoadingOverlayModal';
+import authRoutes, {
+  getAuthRouteByName
+} from 'authRoutes';
+import withAuthentication from 'components/Firebase/HighOrder/withAuthentication';
+import withEmailVerification from 'components/Firebase/HighOrder/withEmailVerification';
+import withAuthorization from 'components/Firebase/HighOrder/withAuthorization';
 import {
   compose
 } from 'recompose';
-import withAuthentication from 'components/Firebase/HighOrder/withAuthentication';
-// import withEmailVerification from 'components/Firebase/HighOrder/withEmailVerification';
-import withAuthorization from 'components/Firebase/HighOrder/withAuthorization';
+import {
+  basicRole,
+  adminRole,
+  systemAdminRole
+} from 'components/Domains/Roles';
+import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 
-const AuthLayout = props => {
-  const notificationSystemRef = createRef();
-  const mainPanelRef = createRef();
-  const getLevel = color => {
-    let level;
-    switch (color) {
-      case 1:
-        level = "success";
-        break;
-      case 2:
-        level = "warning";
-        break;
-      case 3:
-        level = "error";
-        break;
-      case 4:
-        level = "info";
-        break;
-      default:
-        break;
+const hasRole = (roles, role) => {
+  return roles && !!roles[role];
+};
+const hasRoles = (roles, rolesToCheck) => {
+  let hasRolesConfirmed = false;
+  Object.keys(roles).map(roleKey => {
+    if (!hasRolesConfirmed) {
+      hasRolesConfirmed = hasRole(rolesToCheck, roleKey);
     }
-    return level;
-  };
-  const createTitle = () => {
-    return (
-      <span data-notify="icon" className="pe-7s-gift" />
-    );
-  };
-  const createMessage = () => {
-    return (
-      <div>
-        Nau mai, haere mai kī <b>{process.env.REACT_APP_PWA_NAME}</b> - a beautiful freebie for every web developer.
-      </div>
-    );
-  };
-  const createNotification = (title, message, level, position, autoDismiss) => {
-    return {
-      title: title,
-      message: message,
-      level: level,
-      position: position,
-      autoDismiss: autoDismiss
-    };
-  };
-  const createDefaultNotification = (position) => {
-    const title = createTitle();
-    const message = createMessage();
-    const level = getLevel(Math.floor(Math.random() * 4 + 1));
-    const autoDismiss = 15;
-    return createNotification(title, message, level, position, autoDismiss)
-  };
-  const handleNotificationClick = position => {
-    notificationSystemRef.current.addNotification(createDefaultNotification(position));
-  };
-  const getRoutes = routes => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/auth") {
-        // console.log(`prop: ${JSON.stringify(prop)}`);
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={props => (
-              <prop.component
-                {...props}
-                handleClick={handleNotificationClick}
-              />
-            )}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
-  };
-  const getBrandText = path => {
-    for (let i = 0; i < routes.length; i++) {
-      if (
-        props.location.pathname.indexOf(
-          routes[i].layout + routes[i].path
-        ) !== -1
-      ) {
-        return routes[i].name;
-      }
-    }
-    return "Brand";
-  };
-  useEffect(() => {
-    if (
-      window.innerWidth < 993 &&
-      props.history.location.pathname !== props.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
-    ) {
-      document.documentElement.classList.toggle("nav-open");
-    }
-    if (props.history.action === "PUSH") {
-      document.documentElement.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-      mainPanelRef.current.scrollTop = 0;
-    }
-  }, [props, mainPanelRef]);
+    return null;
+  });
+  return hasRolesConfirmed;
+};
+const ApplyRedirect = props => {
+  const fromRoute = getAuthRouteByName('Home');
+  const adminDefaultRoute = getAuthRouteByName('Iwi');
+  const basicDefaultRoute = getAuthRouteByName('Contact Messages');
+  const {
+    authUser
+  } = props;
+  const authUserRoles = authUser && authUser.roles
+    ? authUser.roles
+    : [];
+  const toRoute = hasRoles(authUserRoles, { systemAdminRole, adminRole })
+    ? adminDefaultRoute
+    : hasRoles(authUserRoles, { basicRole })
+      ? basicDefaultRoute
+      : null;
+  console.log(`fromRoute: ${fromRoute && (fromRoute.layout + fromRoute.path)}, toRoute: ${toRoute && (toRoute.layout + toRoute.path)}`);
   return (
-    <div className="wrapper">
-      <NotificationSystem ref={notificationSystemRef} style={style} />
-      <AuthSidebar {...props} routes={routes} image={image} color="black" />
-      <div className="main-panel" ref={mainPanelRef}>
-        <AuthNavbar {...props} brandText={getBrandText(props.location.pathname)} />
-        <Switch>
-          <Suspense fallback={<LoadingOverlayModal />}>
-            {getRoutes(routes)}
-          </Suspense>
-        </Switch>
-        <AuthFooter />
-      </div>
-    </div>
+    toRoute
+      ? <Redirect from={fromRoute.layout + fromRoute.path} to={toRoute.layout + toRoute.path} />
+      : null
+  );
+};
+const getAuthenticatedRoutes = (authUserRoles, logRoutes = false) => {
+  const authenticatedRoutes = [];
+  Object.keys(authRoutes).map(routeKey => {
+    const route = authRoutes[routeKey];
+    if (route && route.path && !route.excludeFromAuthenticatedRoutes && hasRoles(route.roles, authUserRoles)) {
+      if (logRoutes) {
+        console.log(`authenticatedRoute: ${JSON.stringify(route, null, 2)}`);
+      }
+      authenticatedRoutes.push(route);
+    }
+    return null;
+  });
+  return authenticatedRoutes;
+};
+const AuthLayout = props => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [authenticatedRoutes, setAuthenticatedRoutes] = useState([]);
+  const mainPanel = createRef();
+  useEffect(() => {
+    const {
+      platform
+    } = navigator;
+    const platformWin = 'Win';
+    // let perfectScrollbar; to fix
+    const {
+      classList: bodyCssClasses
+    } = document.body;
+    const perfectScrollbarOn = 'perfect-scrollbar-on';
+    const pushAction = 'PUSH';
+    const {
+      history,
+      authUser
+    } = props;
+    if (isLoading) {
+      if (platform.indexOf(platformWin) > -1) {
+        // perfectScrollbar = new PerfectScrollbar(mainPanel.current); to fix
+        bodyCssClasses.toggle(perfectScrollbarOn);
+      }
+      if (history.action === pushAction) {
+        if (mainPanel && mainPanel.current) {
+          mainPanel.current.scrollTop = 0;
+        }
+        if (document && document.scrollingElement && document.scrollingElement.scrollTop) {
+          document.scrollingElement.scrollTop = 0;
+        }
+      }
+      if (authUser && authUser.roles) {
+        const authenticatedRoutes = getAuthenticatedRoutes(authUser.roles);
+        setAuthenticatedRoutes(authenticatedRoutes);
+      }
+      setIsLoading(false);
+    }
+    return () => {
+      if (platform.indexOf(platformWin) > -1) {
+        // perfectScrollbar.destroy(); to fix
+        bodyCssClasses.toggle(perfectScrollbarOn);
+      }
+      if (isLoading) {
+        setIsLoading(false);
+      }
+    };
+  }, [props, mainPanel, isLoading]);
+  return (
+    <>
+      {
+        isLoading
+          ? <LoadingOverlayModal />
+          : <div className="wrapper">
+            <AuthSidebar {...props} routes={authenticatedRoutes} backgroundColor={'indigishare'} />
+            <div className="main-panel" ref={mainPanel}>
+              <AuthNavbar {...props} routes={authenticatedRoutes} />
+              <Switch>
+                <Suspense fallback={<LoadingOverlayModal />}>
+                  <ApplyRedirect {...props} />
+                  {authenticatedRoutes.map((prop, key) => {
+                    const {
+                      layout,
+                      path,
+                      component,
+                      exact
+                    } = prop;
+                    const routePath = layout + path;
+                    console.log(`prop: ${JSON.stringify(prop, null, 2)}`);
+                    return (
+                      <Route path={routePath} component={component} exact={exact} key={key} />
+                    );
+                  })}
+                </Suspense>
+              </Switch>
+              <AuthFooter isFluid />
+            </div>
+          </div>
+      }
+    </>
   );
 };
 
@@ -144,6 +166,6 @@ const condition = authUser => !!authUser && !!authUser.active;
 
 export default compose(
   withAuthentication,
-  // withEmailVerification,
+  withEmailVerification,
   withAuthorization(condition)
 )(AuthLayout);

@@ -1,0 +1,37 @@
+[
+  {
+    "name": ".ENV-CMDRC",
+    "source": "./.env-cmdrc",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/.env-cmdrc"
+  },
+  {
+    "name": ".FIREBASERC",
+    "source": "./.firebaserc",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/.firebaserc"
+  },
+  {
+    "name": "CORS.JSON",
+    "source": "./cors.json",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/cors.json"
+  },
+  {
+    "name": "DATABASE.RULES.JSON",
+    "source": "./database.rules.json",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/database.rules.json"
+  },
+  {
+    "name": "FIREBASE.JSON",
+    "source": "./firebase.json",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/firebase.json"
+  },
+  {
+    "name": "STORAGE.RULES",
+    "source": "./storage.rules",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/storage.rules"
+  },
+  {
+    "name": "DEVSUPPORTFILES.JSON",
+    "source": "./devSupportFiles.json",
+    "destination": "~/Google Drive/Team IndigiShare/Dev Support/PWA/devSupportFiles.json"
+  }
+]

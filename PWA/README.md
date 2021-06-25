@@ -1,17 +1,16 @@
-# [Light Bootstrap Dashboard React](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/?ref=lbdr-readme) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fcreativetimofficial.github.io%2Flight-bootstrap-dashboard-react&text=Light%20Bootstrap%20Dashboard%20React%20-%20Free%20Bootstrap%20Admin%20Template&original_referer=https%3A%2F%2Fdemos.creative-tim.com%2Flight-bootstrap-dashboard-react%2F&via=creativetim&hashtags=react%2Cbootstrap%2Creact-bootstrap%2Ccreativetim%2Ccreative-tim)
+# [Now UI Dashboard React](https://demos.creative-tim.com/now-ui-dashboard-react/#/dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnow-ui-dashboard-react%2F%23%2Fdashboard&text=Now%20UI%20Dashboard%20React%20by%20Creative%20Tim%20%7C%20Free%20React%20Admin%20Template&original_referer=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&via=creativetim&hashtags=react%2Cbootstrap)
 
 
 
-![version](https://img.shields.io/badge/version-1.3.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/light-bootstrap-dashboard-react.svg?maxAge=2592000)]() [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/light-bootstrap-dashboard-react.svg?maxAge=2592000)]()  [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
+![version](https://img.shields.io/badge/version-1.2.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/now-ui-dashboard-react.svg?maxAge=2592000)]() [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/now-ui-dashboard-react.svg?maxAge=2592000)]() [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
 
-![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/light-bootstrap-dashboard-react/light-bootstrap-dashboard-react.gif)
+![Product Gif](./now-ui-dashboard-react.gif)
 
+**[Now UI Dashboard React](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/dashboard)** is an admin dashboard template designed to be beautiful and simple. It is built on top of [Reactstrap](https://reactstrap.github.io/) and [React](https://reactjs.org/) ([create-react-app](https://github.com/facebook/create-react-app)), using [Now UI Dashboard](https://www.creative-tim.com/product/now-ui-dashboard) and it is fully responsive. It comes with a big collections of elements that will offer you multiple possibilities to create the app that best fits your needs. It can be used to create admin panels, project management systems, web applications backend, CMS or CRM.
 
-**[Light Bootstrap Dashboard React](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/?ref=lbdr-readme)** is an admin dashboard template designed to be beautiful and simple. It is built on top of [React Bootstrap](https://5c507d49471426000887a6a7--react-bootstrap.netlify.com/), using [Light Bootstrap Dashboard](https://www.creative-tim.com/product/light-bootstrap?ref=lbdr-readme) and it is fully responsive. It comes with a big collections of elements that will offer you multiple possibilities to create the app that best fits your needs. It can be used to create admin panels, project management systems, web applications backend, CMS or CRM.
+The product represents a big suite of front-end developer tools that can help you jump start your project. We have created it thinking about things you actually need in a dashboard. Now UI Dashboard React contains multiple handpicked and optimized plugins. Everything is designed to fit with one another. As you will be able to see, the dashboard you can access on Creative Tim is a customization of this product.
 
-The product represents a big suite of front-end developer tools that can help you jump start your project. We have created it thinking about things you actually need in a dashboard. Light Bootstrap Dashboard React contains multiple handpicked and optimized plugins. Everything is designed to fit with one another. As you will be able to see, the dashboard you can access on Creative Tim is a customization of this product.
-
-It comes with 6 filter colors for the sidebar (`black`, `azure`,`green`,`orange`,`red`,`purple`) and an option to have a background image.
+It comes with 6 filter colors for the sidebar (`black`, `blue`, `green`, `orange`, `red`, `yellow`) and an option to have a background image.
 
 ## Table of Contents
 
@@ -30,33 +29,36 @@ It comes with 6 filter colors for the sidebar (`black`, `azure`,`green`,`orange`
 
 ## Versions
 
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/html-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/light-bootstrap-dashboard?ref=lbdr-readme)[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/light-bootstrap-dashboard-react?ref=lbdr-readme)[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/vue-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/vue-light-bootstrap-dashboard?ref=lbdr-readme)[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/angular-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/light-bootstrap-dashboard-angular2?ref=lbdr-readme)
+[<img src="https://s3.amazonaws.com/creativetim_bucket/github/html.png" width="60" height="60" />](https://www.creative-tim.com/product/now-ui-dashboard)
+[<img src="https://s3.amazonaws.com/creativetim_bucket/github/react.svg" width="60" height="60" />](https://www.creative-tim.com/product/now-ui-dashboard-react)
+[<img src="https://s3.amazonaws.com/creativetim_bucket/github/angular.png" width="60" height="60" />](https://www.creative-tim.com/product/now-ui-dashboard-angular2)
 
 
-| HTML | React | Vue | Angular |
-| --- | --- | --- | --- |
-| [![Light Bootstrap Dashboard HTML](https://github.com/creativetimofficial/public-assets/blob/master/light-bootstrap-dashboard/light-bootstrap-dashboard.jpg?raw=true)](https://www.creative-tim.com/product/light-bootstrap-dashboard?ref=lbdr-readme) | [![Light Bootstrap Dashboard React](https://github.com/creativetimofficial/public-assets/blob/master/light-bootstrap-dashboard-react/light-bootstrap-dashboard-react.jpg?raw=true)](https://www.creative-tim.com/product/light-bootstrap-dashboard-react?ref=lbdr-readme) | [![Vue Light Bootstrap Dashboard](https://github.com/creativetimofficial/public-assets/blob/master/vue-light-bootstrap-dashboard/vue-light-bootstrap-dashboard.jpg?raw=true)](https://www.creative-tim.com/product/vue-light-bootstrap-dashboard?ref=lbdr-readme) | [![Light Bootstrap Dashboard Angular](https://github.com/creativetimofficial/public-assets/blob/master/light-bootstrap-dashboard-angular/light-bootstrap-dashboard-angular.jpg?raw=true)](https://www.creative-tim.com/product/light-bootstrap-dashboard-angular2?ref=lbdr-readme) |
+| HTML | React | Angular |
+| --- | --- | --- |
+| [![Now UI Dashboard HTML](https://s3.amazonaws.com/creativetim_bucket/products/75/original/opt_nud_thumbnail.jpg)](https://www.creative-tim.com/product/now-ui-dashboard) | [![Now UI Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/76/original/opt_nud_react_thumbnail.jpg)](https://www.creative-tim.com/product/now-ui-dashboard-react) | [![Now UI Dashboard Angular](https://s3.amazonaws.com/creativetim_bucket/products/85/original/opt_nud_angular_thumbnail.jpg)](https://www.creative-tim.com/product/now-ui-dashboard-angular2)
 
 ## Demo
 
-| Dashboard | User Profile | Tables | Maps |
+| Dashboard | User Profile | Tables | Maps | Notification |
 | --- | --- | --- | --- | --- |
-| [![Start page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/light-bootstrap-dashboard-react/dashboard-page.png)](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/admin/dashboard?ref=lbdr-readme) | [![User profile page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/light-bootstrap-dashboard-react/user-page.png)](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/admin/user-page?ref=lbdr-readme) | [![Tables page ](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/light-bootstrap-dashboard-react/tables-page.png)](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/admin/table-list?ref=lbdr-readme) | [![Notifications Page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/light-bootstrap-dashboard-react/notifications-page.png)](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/admin/notifications?ref=lbdr-readme) |
+| [![Start page](./src/assets/github/dashboard.jpg)](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/dashboard) | [![User profile page](./src/assets/github/user_profile.jpg)](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/user) | [![Tables page ](./src/assets/github/tables.jpg)](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/table) | [![Maps Page](./src/assets/github/maps.jpg)](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/maps) | [![Notification page](./src/assets/github/notification.jpg)](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/notifications)
 
-[View More](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/admin/dashboard?ref=lbdr-readme).
+[View More](https://demos.creative-tim.com/now-ui-dashboard-react/#/admin/dashboard).
 
 
 ## Quick start
 
 Quick start options:
 
-- Clone the repo: `git clone https://github.com/creativetimofficial/light-bootstrap-dashboard-react.git`.
-- [Download from Github](https://github.com/creativetimofficial/light-bootstrap-dashboard-react/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/light-bootstrap-dashboard-react?ref=lbdr-readme).
+- `npm i now-ui-dashboard-react` (you will need to import from the dist folder our components)
+- Clone the repo: `git clone https://github.com/creativetimofficial/now-ui-dashboard-react.git`.
+- [Download from Github](https://github.com/creativetimofficial/now-ui-dashboard-react/archive/master.zip).
+- [Download from Creative Tim](https://www.creative-tim.com/product/now-ui-dashboard-react).
 
 
 ## Documentation
-The documentation for the Light Bootstrap Dashboard React is hosted at our [website](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/documentation/?ref=lbdr-readme).
+The documentation for the Now UI Dashboard React is hosted at our [website](https://demos.creative-tim.com/now-ui-dashboard-react/#/documentation/tutorial).
 
 
 ## File Structure
@@ -64,83 +66,88 @@ The documentation for the Light Bootstrap Dashboard React is hosted at our [webs
 Within the download you'll find the following directories and files:
 
 ```
-light-bootstrap-dashboard-react
-.
+Now UI Dashboard React
 ├── CHANGELOG.md
-├── ISSUE_TEMPLATE.md
+├── Documentation
+│   └── tutorial-components.html
 ├── LICENSE.md
 ├── README.md
-├── jsconfig.json
 ├── package.json
-├── Documentation
-│   ├── css
-│   │   ├── demo.css
-│   │   ├── documentation.css
-│   │   └── light-bootstrap-dashboard.css
-│   ├── img
-│   └── tutorial-components.html
 ├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
+│   ├── apple-icon.png
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
 └── src
-    ├── index.js
-    ├── logo.svg
-    ├── routes.js
     ├── assets
-    │   ├── css
-    │   │   ├── animate.min.css
-    │   │   ├── demo.css
-    │   │   ├── light-bootstrap-dashboard-react.css
-    │   │   ├── light-bootstrap-dashboard-react.css.map
-    │   │   ├── light-bootstrap-dashboard-react.min.css
-    │   │   └── pe-icon-7-stroke.css
-    │   ├── fonts
-    │   ├── img
-    │   │   ├── faces
-    │   └── sass
-    │       ├── lbd
-    │       │   └── mixins
-    │       └── light-bootstrap-dashboard-react.scss
+    │   ├── css
+    │   │   └── demo.css
+    │   ├── fonts
+    │   │   └── ...
+    │   ├── img
+    │   │   ├── flags
+    │   │   │   └── ...
+    │   │   └── ...
+    │   └── sass
+    │       ├── now-ui-dashboard
+    │       │   ├── mixins
+    │       │   │   └── ...
+    │       │   ├── plugins
+    │       │   │   └── ...
+    │       │   └── ...
+    │       └── now-ui-dashboard.scss
     ├── components
-    │   ├── Card
-    │   │   └── Card.jsx
-    │   ├── CustomButton
-    │   │   └── CustomButton.jsx
-    │   ├── CustomCheckbox
-    │   │   └── CustomCheckbox.jsx
-    │   ├── CustomRadio
-    │   │   └── CustomRadio.jsx
-    │   ├── FixedPlugin
-    │   │   └── FixedPlugin.jsx
-    │   ├── Footer
-    │   │   └── Footer.jsx
-    │   ├── FormInputs
-    │   │   └── FormInputs.jsx
-    │   ├── Navbars
-    │   │   ├── AdminNavbar.jsx
-    │   │   └── AdminNavbarLinks.jsx
-    │   ├── Sidebar
-    │   │   └── Sidebar.jsx
-    │   ├── StatsCard
-    │   │   └── StatsCard.jsx
-    │   ├── Tasks
-    │   │   └── Tasks.jsx
-    │   └── UserCard
-    │       └── UserCard.jsx
-    ├── layouts
-    │   └── Admin.jsx
+    │   ├── Card
+    │   │   └── Card.jsx
+    │   ├── Footer
+    │   │   └── Footer.jsx
+    │   ├── FormInputs
+    │   │   └── FormInputs.jsx
+    │   ├── Header
+    │   │   └── Header.jsx
+    │   ├── Sidebar
+    │   │   └── Sidebar.jsx
+    │   └── Task
+    │       └── Task.jsx
+    ├── containers
+    │   └── App
+    │       └── App.jsx
+    ├── elements
+    │   ├── CardElements
+    │   │   ├── CardLegend.jsx
+    │   │   ├── CardStatistics.jsx
+    │   │   ├── CardStats.jsx
+    │   │   └── UserCardAuthor.jsx
+    │   ├── CustomButton
+    │   │   └── CustomButton.jsx
+    │   ├── CustomCheckbox
+    │   │   └── CustomCheckbox.jsx
+    │   └── CustomRadio
+    │       └── CustomRadio.jsx
+    ├── index.js
+    ├── routes
+    │   └── app.jsx
     ├── variables
-    │   └── Variables.jsx
+    │   ├── charts.jsx
+    │   ├── general.jsx
+    │   └── icons.jsx
     └── views
-        ├── Dashboard.jsx
-        ├── Icons.jsx
-        ├── Maps.jsx
-        ├── Notifications.jsx
-        ├── TableList.jsx
-        ├── Typography.jsx
-        ├── Upgrade.jsx
-        └── UserProfile.jsx
+        ├── Dashboard
+        │   └── Dashboard.jsx
+        ├── Icons
+        │   └── Icons.jsx
+        ├── Maps
+        │   └── Maps.jsx
+        ├── Notifications
+        │   ├── NotificationSystem
+        │   │   └── NotificationSystem.jsx
+        │   └── Notifications.jsx
+        ├── Table
+        │   └── Tables.jsx
+        ├── Typography
+        │   └── Typography.jsx
+        └── User
+            └── User.jsx
 ```
 
 ## Browser Support
@@ -151,38 +158,38 @@ At present, we officially aim to support the last two versions of the following 
 
 
 ## Resources
-- Demo: https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/admin/dashboard?ref=lbdr-readme
-- Download Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react?ref=lbdr-readme
-- Documentation: https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/documentation/tutorial?ref=lbdr-readme
-- License Agreement: https://www.creative-tim.com/license?ref=lbdr-readme
-- Support: https://www.creative-tim.com/contact-us?ref=lbdr-readme
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues)
+- Demo: https://demos.creative-tim.com/now-ui-dashboard-react
+- Download Page: https://www.creative-tim.com/product/now-ui-dashboard-react
+- Documentation: https://demos.creative-tim.com/now-ui-dashboard-react/#/documentation/tutorial
+- License Agreement: https://www.creative-tim.com/license
+- Support: https://www.creative-tim.com/contact-us
+- Issues: [Github Issues Page](https://github.com/creativetimofficial/now-ui-dashboard-react/issues)
 
 ## Reporting Issues
-We use GitHub Issues as the official bug tracker for the Light Bootstrap Dashboard React. Here are some advices for our users that want to report an issue:
+We use GitHub Issues as the official bug tracker for the Now UI Dashboard React. Here are some advices for our users that want to report an issue:
 
-1. Make sure that you are using the latest version of the Light Bootstrap Dashboard React. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/?ref=lbdr-readme).
+1. Make sure that you are using the latest version of the Now UI Dashboard React. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/).
 2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
 ## Technical Support or Questions
 
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=lbdr-readme) instead of opening an issue.
+If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us) instead of opening an issue.
 
 ## Licensing
 
-- Copyright 2018 Creative Tim (https://www.creative-tim.com?ref=lbdr-readme)
-- Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
+- Copyright 2018 Creative Tim (https://www.creative-tim.com)
+- Licensed under MIT (https://github.com/creativetimofficial/now-ui-dashboard-react/blob/master/LICENSE.md)
 
 ## Useful Links
 
-More products from Creative Tim: <https://www.creative-tim.com/products?ref=lbdr-readme>
+More products from Creative Tim: <https://www.creative-tim.com/products>
 
 Tutorials: <https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w>
 
-Freebies: <https://www.creative-tim.com/products?ref=lbdr-readme>
+Freebies: <https://www.creative-tim.com/products>
 
-Affiliate Program (earn money): <https://www.creative-tim.com/affiliates/new?ref=lbdr-readme>
+Affiliate Program (earn money): <https://www.creative-tim.com/affiliates/new>
 
 Social Media:
 

@@ -12,6 +12,9 @@ import {
   Form,
   CardHeader,
   CardBody,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
   Input,
   CardFooter,
   Button
@@ -20,10 +23,11 @@ import SweetAlert from 'sweetalert2-react';
 import {
   basicRole
 } from 'components/Domains/Roles';
-import isLogo from 'assets/img/islogo-760x760.png';
 
 const RegisterView = props => {
   const defaultDisplayTitle = 'Registration Failed';
+  const [firstFocus, setFirstFocus] = useState(false);
+  const [lastFocus, setLastFocus] = useState(false);
   const [email, setEmail] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -72,55 +76,95 @@ const RegisterView = props => {
   } = process.env;
   return (
     <div className="register-view bg-panel text-center">
-      <Card className="card-login card-plain m-auto py-3">
+      <Card className="card-login card-plain">
         <Form className="form" onSubmit={handleSubmit} noValidate>
           <CardHeader className="text-center">
             <div className="logo-container">
-              <img alt={`${REACT_APP_PWA_NAME}`} src={isLogo} />
+              <img alt={`${REACT_APP_PWA_NAME}`} src={require("assets/img/indigishare/indigishare-logo-512x512.png")} />
             </div>
-            Register here.
+            Regsiter here.
           </CardHeader>
           <CardBody className="pb-0">
-            <Input
-              className="my-3 bg-transparent"
-              placeholder="Email Address"
-              type="email"
-              value={email}
-              onChange={async e => setEmail(e.target.value)}
-              disabled={isSubmitting}
-            />
-            <Input
-              className="my-3 bg-transparent"
-              placeholder="Confirm Email Address"
-              type="email"
-              value={confirmEmail}
-              onChange={async e => setConfirmEmail(e.target.value)}
-              disabled={isSubmitting}
-            />
-            <Input
-              className="my-3 bg-transparent"
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={async e => setPassword(e.target.value)}
-              disabled={isSubmitting}
-            />
-            <Input
-              className="my-3 bg-transparent"
-              placeholder="Confirm Password"
-              type="password"
-              value={confirmPassword}
-              onChange={async e => setConfirmPassword(e.target.value)}
-              disabled={isSubmitting}
-            />
-            <Input
-              className="my-3 bg-transparent"
-              placeholder="Display Name"
-              type="text"
-              value={displayName}
-              onChange={async e => setDisplayName(e.target.value)}
-              disabled={isSubmitting}
-            />
+            <InputGroup className={`no-border input-lg${(firstFocus && ' input-group-focus') || ''}`}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="text-white now-ui-icons ui-1_email-85"></i>
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Email Address"
+                type="email"
+                onFocus={() => setFirstFocus(true)}
+                onBlur={() => setFirstFocus(false)}
+                value={email}
+                onChange={async e => setEmail(e.target.value)}
+                disabled={isSubmitting}
+              ></Input>
+            </InputGroup>
+            <InputGroup className={`no-border input-lg${(firstFocus && ' input-group-focus') || ''}`}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="text-white now-ui-icons ui-1_email-85"></i>
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Confirm Email Address"
+                type="email"
+                onFocus={() => setFirstFocus(true)}
+                onBlur={() => setFirstFocus(false)}
+                value={confirmEmail}
+                onChange={async e => setConfirmEmail(e.target.value)}
+                disabled={isSubmitting}
+              ></Input>
+            </InputGroup>
+            <InputGroup className={`no-border input-lg${(lastFocus && ' input-group-focus') || ''}`}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="now-ui-icons ui-1_lock-circle-open"></i>
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Password"
+                type="password"
+                onFocus={() => setLastFocus(true)}
+                onBlur={() => setLastFocus(false)}
+                value={password}
+                onChange={async e => setPassword(e.target.value)}
+                disabled={isSubmitting}
+              ></Input>
+            </InputGroup>
+            <InputGroup className={`no-border input-lg${(lastFocus && ' input-group-focus') || ''}`}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="now-ui-icons ui-1_lock-circle-open"></i>
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Confirm Password"
+                type="password"
+                onFocus={() => setLastFocus(true)}
+                onBlur={() => setLastFocus(false)}
+                value={confirmPassword}
+                onChange={async e => setConfirmPassword(e.target.value)}
+                disabled={isSubmitting}
+              ></Input>
+            </InputGroup>
+            <InputGroup className={`no-border input-lg${(lastFocus && ' input-group-focus') || ''}`}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="now-ui-icons business_badge"></i>
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Display Name"
+                type="text"
+                onFocus={() => setLastFocus(true)}
+                onBlur={() => setLastFocus(false)}
+                value={displayName}
+                onChange={async e => setDisplayName(e.target.value)}
+                disabled={isSubmitting}
+              ></Input>
+            </InputGroup>
             <p>
               By clicking Register, you agree to our <Link to="/public/PrivacyPolicy" title="Privacy Policy">Privacy Policy</Link> and <Link to="/public/TermsOfUse" title="Terms of Use">Terms of Use</Link>.
             </p>
@@ -128,9 +172,9 @@ const RegisterView = props => {
           <CardFooter className="text-center pt-0">
             <Button
               block
-              className="my-2 bg-success text-white"
-              color="success"
-              size="md"
+              className="btn-round my-2"
+              color="primary"
+              size="lg"
               type="submit"
               disabled={isSubmitting}
             >
@@ -138,12 +182,12 @@ const RegisterView = props => {
             </Button>
             <Button
               block
-              className="my-2 bg-primary text-white"
-              color="primary"
-              size="md"
+              className="btn-round my-2"
+              color="secondary"
+              size="lg"
               type="button"
-              href="/public/Login"
               disabled={isSubmitting}
+              href="/public/Login"
             >
               Back
             </Button>

@@ -1,90 +1,95 @@
 # Change Log
 
-## [1.3.0] 2019-05-03
+## [1.2.0] 2019-06-07
+### Major changes
+- Solved https://github.com/creativetimofficial/now-ui-dashboard-react/issues/1
+- Solved https://github.com/creativetimofficial/now-ui-dashboard-react/issues/3
+- Solved https://github.com/creativetimofficial/now-ui-dashboard-react/issues/4
+- Solved https://github.com/creativetimofficial/now-ui-dashboard-react/issues/7
+- Almost all of the styles inside `src/scss` have been changed
+- We've removed `src/routes/*` files and replaced them with just one file (`src/routes.js`)
+- We've renamed `src/layouts/Dashboard/Dashboard.jsx` to `src/layouts/Admin.jsx`
+- We've dropped the usage of `NODE_PATH=./src` and the file `.env` with the `jsconfig.json` file for using absolute paths
+- We've renamed `src/components/Header/Header.jsx` to `src/components/Navbars/DemoNavbar.jsx`
+- We've renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Dashboard.jsx`
+- We've renamed `src/views/Icons/Icons.jsx` to `src/views/Icons.jsx`
+- We've renamed `src/views/Maps/Maps.jsx` to `src/views/Map.jsx`
+- We've renamed `src/views/Notifications/Notifications.jsx` to `src/views/Notifications.jsx`
+- We've renamed `src/views/TableList/TableList.jsx` to `src/views/TableList.jsx`
+- We've renamed `src/views/Typography/Typography.jsx` to `src/views/Typography.jsx`
+- We've renamed `src/views/UserPage/UserPage.jsx` to `src/views/UserPage.jsx`
+### Dropped components
+- `src/components/CardElements/*` (replaced with simple HTML/React/Reactstrap syntax)
+- `src/components/CustomButton/CustomButton.jsx` (replaced with simple HTML/React/Reactstrap syntax)
+- `src/components/CustomCheckbox/SimpleCheckbox.jsx` (replaced with simple HTML/React/Reactstrap syntax)
+- `src/components/CustomRadio/CustomRadio.jsx` (replaced with simple HTML/React/Reactstrap syntax)
+- `src/components/FormInputs/FormInputs.jsx` (replaced with simple HTML/React/Reactstrap syntax)
+- `src/components/Stats/Stats.jsx` (replaced with simple HTML/React/Reactstrap syntax)
+- `src/components/Tasks/Tasks.jsx` (replaced with simple HTML/React/Reactstrap syntax)
+### Added components
+- `src/components/FixedPlugin/FixedPlugin.jsx`
+### Deleted dependencies
+- All the optional and dev dependencies and replaced them with the Added dependencies, as optional ones
+### Added dependencies
++ jquery@3.4.1
++ @types/googlemaps@3.36.2
++ @types/react@16.8.19
++ typescript@3.5.1
++ @types/markerclustererplus@2.1.33
+### Updated dependencies
+```
+bootstrap                   4.1.3   →    4.3.1
+chart.js                    2.7.1   →    2.8.0
+history                     4.7.2   →    4.9.0
+node-sass                   4.9.3   →   4.12.0
+react                      16.4.2   →   16.8.6
+react-chartjs-2             2.7.4   →    2.7.6
+react-dom                  16.4.2   →   16.8.6
+react-notification-alert    0.0.8   →   0.0.12
+react-router-dom            4.3.1   →    5.0.0
+react-scripts               1.1.5   →    3.0.1
+reactstrap                  6.4.0   →    8.0.0
+```
+
+## [1.1.0] 2018-08-31
 ### Bug fixing
-- Renamed `src/layouts/Dashboard/Dashboard.jsx` to `src/layouts/Admin.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Dashboard.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Icons.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Maps.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Notifications.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/TableList.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Typography.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Upgrade.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/UserProfile.jsx`
-- Renamed `src/components/Header` to `src/components/Navbars`
-- Renamed `src/components/Navbars/Header.jsx` to `src/components/Navbars/AdminNavbar.jsx`
-- Renamed `src/components/Navbars/HeaderLinks.jsx` to `src/components/Navbars/AdminNavbarLinks.jsx`
-- Changes caused by running [the prettier command](https://prettier.io/docs/en/install.html) for *.jsx*, *.js*, *.html* and *.css* files
-- Changed our buggy routing system, now it should work flawlessly, for more info, please refer to our [live docs here](https://demos.creative-tim.com/light-bootstrap-dashboard-react/#/documentation/routing-system)
-- Solved
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/48
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/47
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/34
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/30
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/19
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/17
-  - https://github.com/creativetimofficial/light-bootstrap-dashboard-react/issues/15
-- Removed `.env` file and replaced it with `jsconfig.json`
-- Small bug fixes
-### Removed dependencies/components
-- Deleted `src/routes/*` folder
-- node-sass-chokidar
-- npm-run-all
-### Added dependencies/components
-- Added `src/routes.js` file (instead of the three files from `src/routes/*`)
-- @types/markerclustererplus@2.1.33 (to stop install warnings)
-- @types/googlemaps@3.30.19 (to stop install warnings)
-- @types/react@16.8.13 (to stop install warnings)
-- typescript@3.4.3 (to stop install warnings)
-- react-router@5.0.0 (react-router-dom auto-installs this package, but it is better to have them both inside package.json)
-- react-toggle@4.0.2
-### Update dependencies
-- node-sass           4.6.1   →   4.12.0
-- react              16.2.0   →   16.8.6
-- react-bootstrap    0.32.1   →   0.32.4
-- react-chartist     0.13.1   →   0.13.3
-- react-dom          16.2.0   →   16.8.6
-- react-router-dom    4.2.2   →    5.0.0
-- react-scripts       1.1.1   →    3.0.0
+- Github issues
+  - https://github.com/creativetimofficial/now-ui-dashboard-react/issues/1
+  - https://github.com/creativetimofficial/now-ui-dashboard-react/issues/4
+- Added lint commands
+- Added commands for creating a npmjs library
+### Added dependencies
+- `ajv v5.0.0` (to stop warning: **npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.**)
+- `@types/googlemaps v3.30.12` (to stop warning: **npm WARN react-google-maps@9.4.5 requires a peer of @types/googlemaps@^3.0.0 but none is installed. You must install peer dependencies yourself.**)
+- `@types/markerclustererplus v2.1.33` (to stop warning: **npm WARN react-google-maps@9.4.5 requires a peer of @types/markerclustererplus@^2.1.29 but none is installed. You must install peer dependencies yourself.**)
+- `@types/react v16.4.12` (to stop warning: **npm WARN react-google-maps@9.4.5 requires a peer of @types/react@^15.0.0 || ^16.0.0 but none is installed. You must install peer dependencies yourself.**)
+### Updated dependencies
+- `bootstrap v4.0.0-beta` to `bootstrap v4.1.3`
+- `chart.js v2.7.1` to `chart.js v2.7.2`
+- `node-sass v4.6.1` to `node-sass v4.9.3`
+- `node-sass-chokidar v0.0.3` to `node-sass-chokidar v1.3.3`
+- `npm-run-all v4.1.1` to `npm-run-all v4.1.3`
+- `perfect-scrollbar v1.3.0` to `perfect-scrollbar v1.4.0`
+- `react v16.1.0` to `react v16.4.2`
+- `react-chartjs-2 v2.7.0` to `react-chartjs-2 v2.7.4`
+- `react-dom v16.1.0` to `react-dom v16.4.2`
+- `react-google-maps v9.2.2` to `react-google-maps v9.4.5`
+- `react-notification-alert v0.0.7` to `react-notification-alert v0.0.8`
+- `react-router-dom v4.2.2` to `react-router-dom v4.3.1`
+- `react-scripts v1.0.17` to `react-scripts v1.1.5`
+- `reactstrap v5.0.0-alpha.4` to `reactstrap v6.4.0`
 
-## [1.2.0] 2018-04-12
+## [1.0.2] 2018-05-22
 ### Bug fixing
-- Added `fluid` prop on `Grid` component in `Footer`
-- Moved all the contents of `elements` folder to `components` folder and delete it
-- Renamed `containers` folder to `layouts`
-- Renamed `App/App.jsx` to `Dashboard/Dashboard.jsx`
-- Renamed `src/routes/app.jsx` to `src/routes/dashboard.jsx`
-- Renamed `appRoutes` to `dashboardRoutes`
-- Added `src/routes/index.jsx` and made the routes in `src/index.js` dynamically based on `indexRoutes` from `src/routes/index.jsx` (users can now make new layouts and routes for them easier)
-### Removed dependencies/components
-- `google-maps-react@1.1.0`
-- `react-router@4.1.2`
-### Added dependencies/components
-- `node-sass@4.6.1`
-- `react-google-maps@9.4.5` (insted of `google-maps-react@1.1.0`)
-- `bootstrap@3.3.7` (and deleted `src/assets/bootstrap.min.css?v=3.3.5`)
-### Update dependencies
-- `npm-run-all@4.1.1` to `npm-run-all@4.1.2`
-- `react@15.6.1` to `react@16.2.0`
-- `react-bootstrap@0.31.1` to `react-bootstrap@0.32.1`
-- `react-chartist@0.13.0` to `react-chartist@0.13.1`
-- `react-dom@15.6.1` to `react-dom@16.2.0`
-- `react-notification-system@0.2.15` to `react-notification-system@0.2.17`
-- `react-router-dom@4.1.2` to `react-router-dom@4.2.2`
-- `react-scripts@1.0.10` to `react-scripts@1.1.1`
+- Changed live preview and live documentation links
+- Changed links from `http` to `https`
 
-## [1.1.0] 2017-10-30
+## [1.0.1] 2018-03-28
 ### Bug fixing
-- Changed property of `isChecked` in `CustomCheckbox`
-- Removed hover state for checkboxes and radios
-- Moved `NotificationSystem` outside of `.main-panel` (for responsive issues)
-- All `div`'s with Bootstrap classes (`.container`,`.container-fluid`,`.row`,`.col-*`) were changed in React-Bootstrap components
-- Changed `Notifications Places` buttons from buttons with `className` to our own button component `CustomButton`
-- Added property `round` in `CustomButton` (for the button class `.btn-round`)
-- Added dynamic routes
+- Changed live preview and live documentation links
+- Added `node-sass@4.6.1` as dependencie so that scss compiles without errors
 
-
-## [1.0.0] 2017-09-20
+## [1.0.0] 2018-02-22
 ### Original Release
-- Added React-Bootstrap as base framework
-- Added design from Light Bootstrap Dashboard by Creative Tim
+- Added Reactstrap as base framework
+- Added design from Now Ui Dashboard by Creative Tim

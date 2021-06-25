@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import {
   Container,
+  Row,
   Col,
   Card,
   CardHeader,
@@ -32,7 +33,6 @@ const withAuthorization = condition => Component => {
     } = process.env;
     useEffect(() => {
       let listener = null;
-      setIsLoading(true);
       (async function useEffectAsync() {
         listener = await props.firebase.authUserListener(authUser => {
           if (!authUser || !condition(authUser)) {
@@ -41,12 +41,15 @@ const withAuthorization = condition => Component => {
         }, () => {
           props.history.push('/public/Login');
         });
+        setIsLoading(false);
       })();
-      setIsLoading(false);
       return () => {
-        listener && listener();
+        if (!isLoading && typeof listener === 'function') {
+          listener();
+          listener = null;
+        }
       };
-    }, [props]);
+    }, [props, isLoading]);
     return (
       <AuthUserContext.Consumer>
         {
@@ -56,34 +59,24 @@ const withAuthorization = condition => Component => {
               : condition(authUser)
                 ? <Component {...props} authUser={authUser} />
                 : <>
-                  <div className="page-header clear-filter">
-                    <div
-                      className="page-header-image"
-                      style={{
-                        backgroundImage: `url(${require('assets/img/fern-2000x1121.jpg')})`
-                      }}
-                    ></div>
-                    <div className="content">
-                      <Container>
-                        <Col className="ml-auto mr-auto py-3 py-lg-5" md="8">
-                          <div className="p-3 login-view">
-                            <Card className="no-transition bg-panel text-center">
-                              <CardHeader className="pb-0">
-                                <h1 className="text-danger">{REACT_APP_PWA_NAME} Access Denied!</h1>
-                              </CardHeader>
-                              <CardBody className="pt-0">
-                                <h3>
-                                  Need to discuss your options? Send us an email so we know.{' '}
-                                  <SendUsAnEmail email={REACT_APP_PWA_EMAIL} subject={`${REACT_APP_PWA_NAME} Access Denied!`} className="text-info" />
-                                </h3>
-                                <CopyrightInfomation />
-                              </CardBody>
-                            </Card>
-                          </div>
-                        </Col>
-                      </Container>
-                    </div>
-                  </div>
+                  <Container className="mt-4">
+                    <Row>
+                      <Col className="mx-auto" md="8">
+                        <Card className="no-transition">
+                          <CardHeader>
+                            <h1 className="text-danger">{REACT_APP_PWA_NAME} Access Denied!</h1>
+                          </CardHeader>
+                          <CardBody>
+                            <h3>
+                              Need to discuss your options? Send us an email so we know.{' '}
+                              <SendUsAnEmail email={REACT_APP_PWA_EMAIL} subject={`${REACT_APP_PWA_NAME} Access Denied!`} className="text-info" />
+                            </h3>
+                            <CopyrightInfomation />
+                          </CardBody>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </Container>
                 </>
         }
       </AuthUserContext.Consumer>

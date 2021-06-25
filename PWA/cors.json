@@ -1,0 +1,20 @@
+[
+  {
+    "__comment": "gsutil cors set cors.json gs://indigishare-platform.appspot.com",
+    "origin": [
+      "http://localhost:5030",
+      "https://indigishare.com",
+      "https://www.indigishare.com",
+      "http://localhost:5035",
+      "https://pwa.indigishare.com",
+      "http://localhost:5031"
+    ],
+    "method": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]

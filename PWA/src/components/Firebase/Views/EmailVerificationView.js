@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import {
   Container,
+  Row,
   Col,
   Card,
   CardHeader,
@@ -17,7 +18,7 @@ import CopyrightInfomation from '../../App/CopyrightInfomation';
 const ConfirmationSection = props => (
   <>
     <h3>{props.title}</h3>
-    <h5>Check your emails (Spam/Junk folder included) for a confirmation email. {props.details}</h5>
+    <h5><b className="text-success">Check your emails</b> <i className="text-warning">(Spam/Junk folder included)</i> for a confirmation email. {props.details}</h5>
   </>
 );
 const EmailVerificationView = props => {
@@ -34,37 +35,32 @@ const EmailVerificationView = props => {
       });
   };
   return (
-    <div className="page-header clear-filter">
-      <div
-        className="page-header-image"
-        style={{
-          backgroundImage: `url(${require('assets/img/fern-2000x1121.jpg')})`
-        }}
-      ></div>
-      <div className="content">
-        <Container>
-          <Col className="ml-auto mr-auto py-3 py-lg-5" md="8">
-            <div className="p-3 login-view">
-              <Card className="no-transition bg-panel text-center">
-                <CardHeader className="pb-0">
-                  <h2>{process.env.REACT_APP_PWA_NAME} Email Verification</h2>
-                </CardHeader>
-                <CardBody className="pt-0">
-                  <ConfirmationSection title={title} details={details} />
-                  <Button type="button" block className="mt-4 bg-success text-white" onClick={handleSendConfirmationEmailClick} disabled={isSent}>
-                    Send confirmation Email
-                  </Button>
-                  <div className="mt-3">
-                    <CopyrightInfomation />
-                  </div>
-                </CardBody>
-              </Card>
-            </div>
+    <>
+      <img
+        src={require('assets/img/indigishare/Te-Takarangi-hero-2-80pct.jpg')}
+        alt="Fullscreen Background"
+        className="fullscreen-background-image"
+      />
+      <Container className="mt-3 pt-5 text-light">
+        <Row>
+          <Col className="mx-auto" md="8">
+            <Card className="no-transition bg-panel px-5 py-3">
+              <CardHeader>
+                <h2>{process.env.REACT_APP_PWA_NAME} Email Verification</h2>
+              </CardHeader>
+              <CardBody>
+                <ConfirmationSection title={title} details={details} />
+                <Button onClick={handleSendConfirmationEmailClick} disabled={isSent} type="button" className="mt-3" color="link">
+                  Re-send Confirmation Email
+                </Button>
+                <CopyrightInfomation />
+              </CardBody>
+            </Card>
           </Col>
-        </Container>
-      </div>
-    </div>
+        </Row>
+      </Container>
+    </>
   );
-};
+}
 
 export default withFirebase(EmailVerificationView);

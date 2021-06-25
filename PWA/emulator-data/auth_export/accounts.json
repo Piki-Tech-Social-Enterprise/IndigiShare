@@ -1,0 +1,26 @@
+{
+  "kind": "identitytoolkit#DownloadAccountResponse",
+  "users": [
+    {
+      "localId": "9VHhz8oUJkeR6I1FULDOVxsWzft6",
+      "createdAt": "1624596064391",
+      "lastLoginAt": "1624596064390",
+      "passwordHash": "fakeHash:salt=fakeSaltgWrScYclWAGFsPoOHgma:password=35Autsc3",
+      "salt": "fakeSaltgWrScYclWAGFsPoOHgma",
+      "passwordUpdatedAt": 1624601385898,
+      "providerUserInfo": [
+        {
+          "providerId": "password",
+          "email": "john.shortland@pikitech.co.nz",
+          "federatedId": "john.shortland@pikitech.co.nz",
+          "rawId": "john.shortland@pikitech.co.nz"
+        }
+      ],
+      "validSince": "1624601385",
+      "email": "john.shortland@pikitech.co.nz",
+      "emailVerified": true,
+      "disabled": false,
+      "lastRefreshAt": "2021-06-25T06:13:11.981Z"
+    }
+  ]
+}
