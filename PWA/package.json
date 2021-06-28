@@ -7,7 +7,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "5.0.2",
-    "chart.js": "3.3.2",
+    "chart.js": "3.4.0",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "firebase": "^8.6.8",

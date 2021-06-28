@@ -11,7 +11,7 @@ specifiers:
   babel-register: ^6.26.0
   bootstrap: 5.0.2
   chalk: ^4.1.1
-  chart.js: 3.3.2
+  chart.js: 3.4.0
   draft-js: ^0.11.7
   draftjs-to-html: ^0.9.1
   env-cmd: ^10.1.0
@@ -46,7 +46,7 @@ specifiers:
 dependencies:
   axios: 0.21.1
   bootstrap: 5.0.2
-  chart.js: 3.3.2
+  chart.js: 3.4.0
   draft-js: 0.11.7_react-dom@17.0.2+react@17.0.2
   draftjs-to-html: 0.9.1
   firebase: 8.6.8
@@ -58,7 +58,7 @@ dependencies:
   prop-types: 15.7.2
   react: 17.0.2
   react-bootstrap-table: 4.3.1_react-dom@17.0.2+react@17.0.2
-  react-chartjs-2: 3.0.3_chart.js@3.3.2+react@17.0.2
+  react-chartjs-2: 3.0.3_chart.js@3.4.0+react@17.0.2
   react-datetime: 3.0.4_moment@2.29.1+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-draft-wysiwyg: 1.14.7_238eb5982f30a9897f3f19039e5e474f
@@ -4150,8 +4150,8 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: false
 
-  /chart.js/3.3.2:
-    resolution: {integrity: sha512-H0hSO7xqTIrwxoACqnSoNromEMfXvfuVnrbuSt2TuXfBDDofbnto4zuZlRtRvC73/b37q3wGAWZyUU41QPvNbA==}
+  /chart.js/3.4.0:
+    resolution: {integrity: sha512-mJsRm2apQm5mwz2OgYqGNG4erZh/qljcRZkWSa0kLkFr3UC3e1wKRMgnIh6WdhUrNu0w/JT9PkjLyylqEqHXEQ==}
     dev: false
 
   /chokidar/1.7.0:
@@ -10597,13 +10597,13 @@ packages:
       - react-dom
     dev: false
 
-  /react-chartjs-2/3.0.3_chart.js@3.3.2+react@17.0.2:
+  /react-chartjs-2/3.0.3_chart.js@3.4.0+react@17.0.2:
     resolution: {integrity: sha512-jOFZKwZ8sMLkddewZ/tToxuu4pYimAvvY5I6uK+hCpSFT16Pvo2bdHhUoZ0X87zu9I+dx2I+JCqaLN6XhmrbDg==}
     peerDependencies:
       chart.js: ^3.1.0
       react: ^16.8.0 || ^17.0.0
     dependencies:
-      chart.js: 3.3.2
+      chart.js: 3.4.0
       lodash: 4.17.21
       react: 17.0.2
     dev: false
