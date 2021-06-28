@@ -7,7 +7,7 @@
       "lastLoginAt": "1624596064390",
       "passwordHash": "fakeHash:salt=fakeSaltgWrScYclWAGFsPoOHgma:password=35Autsc3",
       "salt": "fakeSaltgWrScYclWAGFsPoOHgma",
-      "passwordUpdatedAt": 1624601385898,
+      "passwordUpdatedAt": 1624921775956,
       "providerUserInfo": [
         {
           "providerId": "password",
@@ -16,11 +16,11 @@
           "rawId": "john.shortland@pikitech.co.nz"
         }
       ],
-      "validSince": "1624601385",
+      "validSince": "1624921775",
       "email": "john.shortland@pikitech.co.nz",
       "emailVerified": true,
       "disabled": false,
-      "lastRefreshAt": "2021-06-25T06:13:11.981Z"
+      "lastRefreshAt": "2021-06-28T23:12:17.219Z"
     }
   ]
 }
