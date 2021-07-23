@@ -8,9 +8,9 @@
     "@fortawesome/fontawesome-free": "5.15.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.1.9",
+    "@testing-library/user-event": "^13.2.0",
     "bootstrap": "5.0.2",
-    "firebase": "^8.6.8",
+    "firebase": "^8.8.0",
     "jquery": "3.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -18,8 +18,8 @@
     "react-scripts": "^4.0.3",
     "reactstrap": "^8.9.0",
     "simple-line-icons": "^2.5.5",
-    "sweetalert2": "^11.0.18",
-    "sweetalert2-react-content": "^4.1.0"
+    "sweetalert2": "^11.0.19",
+    "sweetalert2-react-content": "^4.1.1"
   },
   "scripts": {
     "updateDependencies": "ncu -x node-sass -u --timeout 180000 && npm i",
@@ -62,7 +62,7 @@
     ]
   },
   "devDependencies": {
-    "browser-sync": "2.27.3",
+    "browser-sync": "2.27.4",
     "del": "6.0.0",
     "env-cmd": "^10.1.0",
     "gulp": "^4.0.2",

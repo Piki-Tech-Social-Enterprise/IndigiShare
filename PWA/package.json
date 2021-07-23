@@ -7,19 +7,19 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "5.0.2",
-    "chart.js": "3.4.0",
+    "chart.js": "3.4.1",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
-    "firebase": "^8.6.8",
-    "googleapis": "^79.0.0",
+    "firebase": "^8.8.0",
+    "googleapis": "^82.0.0",
     "history": "4.10.0",
     "moment": "^2.29.1",
     "node-sass": "4.14.1",
-    "perfect-scrollbar": "1.5.1",
+    "perfect-scrollbar": "1.5.2",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-bootstrap-table": "^4.3.1",
-    "react-chartjs-2": "3.0.3",
+    "react-chartjs-2": "3.0.4",
     "react-datetime": "^3.0.4",
     "react-dom": "17.0.2",
     "react-draft-wysiwyg": "^1.14.7",
@@ -31,7 +31,7 @@
     "react-tagsinput-2": "^3.19.8",
     "reactstrap": "8.9.0",
     "recompose": "^0.30.0",
-    "sweetalert2": "^11.0.18",
+    "sweetalert2": "^11.0.19",
     "sweetalert2-react": "^0.8.3"
   },
   "scripts": {
@@ -106,9 +106,9 @@
   "optionalDependencies": {
     "@types/googlemaps": "3.43.3",
     "@types/markerclustererplus": "2.1.33",
-    "@types/react": "17.0.11",
+    "@types/react": "17.0.14",
     "jquery": "3.6.0",
-    "typescript": "4.3.4"
+    "typescript": "4.3.5"
   },
   "browserslist": {
     "production": [
