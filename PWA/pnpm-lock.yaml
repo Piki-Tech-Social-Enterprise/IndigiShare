@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@types/googlemaps': 3.43.3
   '@types/markerclustererplus': 2.1.33
-  '@types/react': 17.0.14
+  '@types/react': 17.0.15
   axios: ^0.21.1
   babel-cli: ^6.26.0
   babel-preset-env: ^1.7.0
@@ -11,7 +11,7 @@ specifiers:
   babel-register: ^6.26.0
   bootstrap: 5.0.2
   chalk: ^4.1.1
-  chart.js: 3.4.1
+  chart.js: 3.5.0
   draft-js: ^0.11.7
   draftjs-to-html: ^0.9.1
   env-cmd: ^10.1.0
@@ -39,14 +39,14 @@ specifiers:
   react-tagsinput-2: ^3.19.8
   reactstrap: 8.9.0
   recompose: ^0.30.0
-  sweetalert2: ^11.0.19
+  sweetalert2: ^11.0.20
   sweetalert2-react: ^0.8.3
   typescript: 4.3.5
 
 dependencies:
   axios: 0.21.1
   bootstrap: 5.0.2
-  chart.js: 3.4.1
+  chart.js: 3.5.0
   draft-js: 0.11.7_react-dom@17.0.2+react@17.0.2
   draftjs-to-html: 0.9.1
   firebase: 8.8.0
@@ -58,11 +58,11 @@ dependencies:
   prop-types: 15.7.2
   react: 17.0.2
   react-bootstrap-table: 4.3.1_react-dom@17.0.2+react@17.0.2
-  react-chartjs-2: 3.0.4_chart.js@3.4.1+react@17.0.2
+  react-chartjs-2: 3.0.4_chart.js@3.5.0+react@17.0.2
   react-datetime: 3.0.4_moment@2.29.1+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-draft-wysiwyg: 1.14.7_238eb5982f30a9897f3f19039e5e474f
-  react-google-maps: 9.4.5_4a4db71893bc84432737e3ea1dd00758
+  react-google-maps: 9.4.5_0b14201947a7648da123f818496400b4
   react-notification-alert: 0.0.13_ad9384cc3c17ee1ae0897283267f6f3c
   react-router: 5.2.0_react@17.0.2
   react-router-dom: 5.2.0_react@17.0.2
@@ -70,13 +70,13 @@ dependencies:
   react-tagsinput-2: 3.19.8_react@17.0.2
   reactstrap: 8.9.0_react-dom@17.0.2+react@17.0.2
   recompose: 0.30.0_react@17.0.2
-  sweetalert2: 11.0.19
+  sweetalert2: 11.0.20
   sweetalert2-react: 0.8.3_react-dom@17.0.2+react@17.0.2
 
 optionalDependencies:
   '@types/googlemaps': 3.43.3
   '@types/markerclustererplus': 2.1.33
-  '@types/react': 17.0.14
+  '@types/react': 17.0.15
   jquery: 3.6.0
   typescript: 4.3.5
 
@@ -2264,8 +2264,8 @@ packages:
     resolution: {integrity: sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==}
     dev: false
 
-  /@types/react/17.0.14:
-    resolution: {integrity: sha512-0WwKHUbWuQWOce61UexYuWTGuGY/8JvtUe/dtQ6lR4sZ3UiylHotJeWpf3ArP9+DSGUoLY3wbU59VyMrJps5VQ==}
+  /@types/react/17.0.15:
+    resolution: {integrity: sha512-uTKHDK9STXFHLaKv6IMnwp52fm0hwU+N89w/p9grdUqcFA6WuqDyPhaWopbNyE1k/VhgzmHl8pu1L4wITtmlLw==}
     dependencies:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
@@ -4155,8 +4155,8 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: false
 
-  /chart.js/3.4.1:
-    resolution: {integrity: sha512-0R4mL7WiBcYoazIhrzSYnWcOw6RmrRn7Q4nKZNsBQZCBrlkZKodQbfeojCCo8eETPRCs1ZNTsAcZhIfyhyP61g==}
+  /chart.js/3.5.0:
+    resolution: {integrity: sha512-J1a4EAb1Gi/KbhwDRmoovHTRuqT8qdF0kZ4XgwxpGethJHUdDrkqyPYwke0a+BuvSeUxPf8Cos6AX2AB8H8GLA==}
     dev: false
 
   /chokidar/1.7.0:
@@ -10610,13 +10610,13 @@ packages:
       - react-dom
     dev: false
 
-  /react-chartjs-2/3.0.4_chart.js@3.4.1+react@17.0.2:
+  /react-chartjs-2/3.0.4_chart.js@3.5.0+react@17.0.2:
     resolution: {integrity: sha512-pcbFNpkPMTkGXXJ7k7hnukbRD0ZV01qB6JQY1ontITc2IYvhGlK6BBDy28VeydYs1Dl/c5ZpRgRVEtT5GUnxcQ==}
     peerDependencies:
       chart.js: ^3.1.0
       react: ^16.8.0 || ^17.0.0
     dependencies:
-      chart.js: 3.4.1
+      chart.js: 3.5.0
       lodash: 4.17.21
       react: 17.0.2
     dev: false
@@ -10695,7 +10695,7 @@ packages:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
     dev: false
 
-  /react-google-maps/9.4.5_4a4db71893bc84432737e3ea1dd00758:
+  /react-google-maps/9.4.5_0b14201947a7648da123f818496400b4:
     resolution: {integrity: sha512-8z5nX9DxIcBCXuEiurmRT1VXVwnzx0C6+3Es6lxB2/OyY2SLax2/LcDu6Aldxnl3HegefTL7NJzGeaKAJ61pOA==}
     peerDependencies:
       '@types/googlemaps': ^3.0.0
@@ -10706,7 +10706,7 @@ packages:
     dependencies:
       '@types/googlemaps': 3.43.3
       '@types/markerclustererplus': 2.1.33
-      '@types/react': 17.0.14
+      '@types/react': 17.0.15
       babel-runtime: 6.26.0
       can-use-dom: 0.1.0
       google-maps-infobox: 2.0.0
@@ -12249,8 +12249,8 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /sweetalert2/11.0.19:
-    resolution: {integrity: sha512-fJkiIhvOjDux8Ns08uWNdWPcLql5tpMpiuc78sYLjY9zTBvkj7rvmPHHckdkAZLKVGUmOfy8ckDZ1ElS0lLpjw==}
+  /sweetalert2/11.0.20:
+    resolution: {integrity: sha512-htNVn/7IDNfqSLo8m50s0Y7FkgAjng7NnQbvi5p1e4ydxByjiiNgpWhSThgiCRFYMzIaSEuOam2d4Sq9FbVyfA==}
     dev: false
 
   /sweetalert2/8.19.0:
