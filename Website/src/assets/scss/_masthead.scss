@@ -4,8 +4,8 @@ header.masthead {
   background: url('../img/fern-1900x1216.jpg') no-repeat center center;
   @include background-cover;
   min-height: 94vh;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   opacity: 0.85;
   .overlay {
     position: absolute;
@@ -20,8 +20,8 @@ header.masthead {
     font-size: 2rem;
   }
   @media (min-width: 768px) {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     h1 {
       font-size: 3rem;
     }

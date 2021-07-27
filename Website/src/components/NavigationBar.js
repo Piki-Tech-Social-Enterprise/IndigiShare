@@ -3,8 +3,14 @@ import React, {
   createRef
 } from 'react';
 import isLogo from '../assets/img/islogo-760x760.png';
-import hacktheCrisisNZLogo from '../assets/img/HacktheCrisisNZ_Logo White.png';
+// import hacktheCrisisNZLogo from '../assets/img/HacktheCrisisNZ_Logo White.png';
 import Routes from './Routes';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody
+} from 'reactstrap';
 
 const {
   home,
@@ -25,6 +31,8 @@ const NavagationBar = () => {
   const {
     REACT_APP_WEB_NAME
   } = process.env;
+  const [showPledgeMePopup, setShowPledgeMePopup] = useState(false);
+  const handleShowPledgeMePopupToggle = () => setShowPledgeMePopup(!showPledgeMePopup);
   return (
     <nav className="navbar navbar-light bg-light static-top">
       <div className="container-fluid text-center">
@@ -35,7 +43,29 @@ const NavagationBar = () => {
         <span className="d-none d-lg-inline-block">
           &nbsp;#IndigiShare
         </span>
-        <a className="mx-sm-auto d-none d-sm-inline-block" href="https://facebook.com/hackthecrisisNZ" target="_blank" rel="noopener noreferrer">
+        <Button className="mx-auto activate-indigishare-today-button" color="success" onClick={handleShowPledgeMePopupToggle} outline><span className="text-linear-gradient">Activate IndigiShare Today!</span></Button>
+        <Modal isOpen={showPledgeMePopup} toggle={handleShowPledgeMePopupToggle} returnFocusAfterClose={false} style={{
+          maxWidth: '370px'
+        }}>
+          <ModalHeader toggle={handleShowPledgeMePopupToggle}>Help paddle the IndigiShare waka...</ModalHeader>
+          <ModalBody>
+            <i>Checkout our rewards by going to our PledgeMe Campaign page below.</i>
+            <iframe
+              title="IndigiShare PledgeMe Campaign 2021"
+              src="https://pledgeme.co.nz/projects/6984-indigishare-crowdfund-raise/embed_card"
+              // src="https://pledgeme.co.nz/projects/6984-indigishare-crowdfund-raise/embed_video_card"
+              frameBorder="0"
+              scrolling="no"
+              style={{
+                width: '100%',
+                height: '100%',
+                minHeight: '555px',
+                border: 'none'
+              }}
+            />
+          </ModalBody>
+        </Modal>
+        {/* <a className="mx-sm-auto d-none d-sm-inline-block" href="https://facebook.com/hackthecrisisNZ" target="_blank" rel="noopener noreferrer">
           <img alt="Hack the Crisis NZ 2020" src={hacktheCrisisNZLogo} className="bg-linear-gradient" style={{
             height: '50px'
           }} />
@@ -44,7 +74,7 @@ const NavagationBar = () => {
           }}>
             &nbsp;&nbsp;&nbsp;#HacktheCrisisNZ
           </span>
-        </a>
+        </a> */}
         <div className="menu" ref={menuRef} onClick={handleMenuOverlayOnClick}>
           <span />
         </div>

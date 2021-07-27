@@ -35,3 +35,7 @@ code {
 .text-linear-gradient {
   @include text-linear-gradient(127deg, $success, darken($warning, 15%));
 }
+
+.activate-indigishare-today-button > span.text-linear-gradient:hover {
+  @include text-linear-gradient(127deg, white, white);
+}

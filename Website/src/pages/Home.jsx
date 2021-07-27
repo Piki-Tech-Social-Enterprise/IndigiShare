@@ -3,16 +3,16 @@ import React, {
   useState
 } from 'react';
 import fernImage from '../assets/img/fern-767-430.jpg';
-import {
-  isEmailValid,
-  isNullOrEmpty,
-  customSwal
-} from '../components/Utilities';
-import Firebase from '../components/Firebase';
+// import {
+//   isEmailValid,
+//   isNullOrEmpty,
+//   customSwal
+// } from '../components/Utilities';
+// import Firebase from '../components/Firebase';
 
-const {
-  database
-} = Firebase;
+// const {
+//   database
+// } = Firebase;
 const INITIAL_STATE = {
   isLoading: true,
   email: ''
@@ -31,63 +31,63 @@ const Home = () => {
     } = e.target;
     setState(s => ({
       ...s,
-      [name]: value
+      [(name || '').toLowerCase()]: value
     }));
   };
-  const handleSubmit = async e => {
-    e.preventDefault();
-    let swalIcon = 'error';
-    let swalTitle = 'Sign Up';
-    let swalHtml = '';
-    if (isNullOrEmpty(email)) {
-      swalHtml = `Email is a required field.`;
-    } else if (!isEmailValid(email)) {
-      swalHtml = `'${email}' is not a valid email address.`;
-    }
-    if (isNullOrEmpty(swalHtml)) {
-      try {
-        const now = new Date();
-        const signUpsRef = database.ref('signUps');
-        const signUpsQuery = signUpsRef
-          .orderByChild('email')
-          .equalTo(email)
-          .limitToFirst(1);
-        const signUpsQueryRef = await signUpsQuery.once('value');
-        const signUpsQuerySnapshot = await signUpsQueryRef.val();
-        const signUps = Object
-          .keys(signUpsQuerySnapshot || {})
-          .map(key =>
-            signUpsQuerySnapshot[key]
-          );
-        if (signUps.length === 0) {
-          await signUpsRef.push({
-            active: true,
-            created: now.toString(),
-            createdBy: 'Website',
-            email,
-            updated: now.toString(),
-            updatedBy: 'Website'
-          });
-          swalIcon = 'success';
-          swalHtml = 'Thank you signing up, please keep an eye out for our regular updates.';
-          setState(s => ({
-            ...s,
-            email: INITIAL_STATE.email
-          }));
-        } else {
-          swalHtml = `'${email}' has already signed up.`;
-        }
-      } catch (error) {
-        swalHtml = `Error: ${error}`;
-      }
-    }
-    customSwal({
-      icon: swalIcon,
-      title: swalTitle,
-      html: swalHtml,
-      confirmButtonText: 'OK'
-    });
-  };
+  // const handleSubmit = async e => {
+  //   e.preventDefault();
+  //   let swalIcon = 'error';
+  //   let swalTitle = 'Sign Up';
+  //   let swalHtml = '';
+  //   if (isNullOrEmpty(email)) {
+  //     swalHtml = `Email is a required field.`;
+  //   } else if (!isEmailValid(email)) {
+  //     swalHtml = `'${email}' is not a valid email address.`;
+  //   }
+  //   if (isNullOrEmpty(swalHtml)) {
+  //     try {
+  //       const now = new Date();
+  //       const signUpsRef = database.ref('signUps');
+  //       const signUpsQuery = signUpsRef
+  //         .orderByChild('email')
+  //         .equalTo(email)
+  //         .limitToFirst(1);
+  //       const signUpsQueryRef = await signUpsQuery.once('value');
+  //       const signUpsQuerySnapshot = await signUpsQueryRef.val();
+  //       const signUps = Object
+  //         .keys(signUpsQuerySnapshot || {})
+  //         .map(key =>
+  //           signUpsQuerySnapshot[key]
+  //         );
+  //       if (signUps.length === 0) {
+  //         await signUpsRef.push({
+  //           active: true,
+  //           created: now.toString(),
+  //           createdBy: 'Website',
+  //           email,
+  //           updated: now.toString(),
+  //           updatedBy: 'Website'
+  //         });
+  //         swalIcon = 'success';
+  //         swalHtml = 'Thank you signing up, please keep an eye out for our regular updates.';
+  //         setState(s => ({
+  //           ...s,
+  //           email: INITIAL_STATE.email
+  //         }));
+  //       } else {
+  //         swalHtml = `'${email}' has already signed up.`;
+  //       }
+  //     } catch (error) {
+  //       swalHtml = `Error: ${error}`;
+  //     }
+  //   }
+  //   customSwal({
+  //     icon: swalIcon,
+  //     title: swalTitle,
+  //     html: swalHtml,
+  //     confirmButtonText: 'OK'
+  //   });
+  // };
   useEffect(() => {
     const pageInit = async () => {
       setState(s => ({
@@ -106,9 +106,15 @@ const Home = () => {
       <header className="masthead text-white text-center">
         <div className="overlay"></div>
         <div className="container">
-          <div className="row p-5 bg-linear-gradient">
-            <div className="col-xl-9 mx-auto">
-              <h1>Think global. Act local.<br />Indigenous focal.</h1>
+          <div className="row p-3 bg-linear-gradient">
+            <div className="col mx-auto iframe-container">
+              <iframe
+                title="IndigiShare"
+                src="https://www.youtube.com/embed/DDwooalV8NU"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
@@ -246,12 +252,38 @@ const Home = () => {
               <h2 className="mb-4">Ready to be an early adopter? Sign up now!</h2>
             </div>
             <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <form noValidate formNoValidate autoComplete="chrome-off" onSubmit={handleSubmit}>
+              <div id="mc_embed_signup">
+                <form
+                  action="https://IndigiShare.us6.list-manage.com/subscribe/post?u=ca4cfdbbaa7d942e19299c203&amp;id=e7ade2dd91"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  className="validate"
+                  target="_blank"
+                  noValidate
+                >
+                  <div id="mc_embed_signup_scroll" className="form-row">
+                    <div className="col-12 col-md-9 mb-2 mb-md-0">
+                      <input type="email" name="EMAIL" className="form-control form-control-lg" id="mce-EMAIL" placeholder="Email" value={email} onChange={handleChange} required />
+                    </div>
+                    <div aria-hidden="true" style={{
+                      position: 'absolute',
+                      left: '-5000px'
+                    }}>
+                      <input type="text" name="b_ca4cfdbbaa7d942e19299c203_e7ade2dd91" tabIndex="-1" value="" onChange={() => {}} />
+                    </div>
+                    <div className="col-12 col-md-3">
+                      <input type="submit" value="Let's go!" name="subscribe" id="mc-embedded-subscribe" className="btn btn-block btn-lg btn-success" />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              {/* <form noValidate formNoValidate autoComplete="chrome-off" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="col-12 col-md-9 mb-2 mb-md-0"><input className="form-control form-control-lg" type="email" placeholder="Email" name="email" value={email} onChange={handleChange} /></div>
                   <div className="col-12 col-md-3"><button className="btn btn-block btn-lg btn-success" type="submit">Let's go!</button></div>
                 </div>
-              </form>
+              </form> */}
             </div>
           </div>
         </div>

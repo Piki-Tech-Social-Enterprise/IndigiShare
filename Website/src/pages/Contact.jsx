@@ -16,6 +16,7 @@ import {
   customSwal
 } from '../components/Utilities';
 import Firebase from '../components/Firebase';
+import indigiShareGroupPhoto20210716Image from '../assets/img/indigishare-group-photo-20210716.webp';
 
 const {
   database
@@ -106,33 +107,41 @@ const Contact = () => {
   }, [isLoading]);
   return (
     <Container className="my-5" fluid>
+      <h1 className="p-5 bg-linear-gradient text-white text-center">Contact Us</h1>
       <Row>
-        <Col xs={12}>
-          <h1 className="p-5 bg-linear-gradient text-white text-center">Contact Us</h1>
+        <Col xs={12} sm={6} className="order-lg-1 order-2">
           <h3 className="text-linear-gradient">Get in touch...</h3>
           <p>If you have any questions or need help, please fill out the form below.</p>
           <Form noValidate formNoValidate autoComplete="chrome-off" onSubmit={handleSubmit}>
             <Row form>
-              <Col xs={6}>
+              <Col xs={12}>
                 <Input className="mb-3" type="text" placeholder="Name" name="name" value={name} onChange={handleChange} />
               </Col>
             </Row>
             <Row form>
-              <Col xs={6}>
+              <Col xs={12}>
                 <Input className="mb-3" type="email" placeholder="Email" name="email" value={email} onChange={handleChange} />
               </Col>
             </Row>
             <Row form>
-              <Col xs={6}>
+              <Col xs={12}>
                 <Input className="mb-3" type="textarea" placeholder="Message" name="message" value={message} onChange={handleChange} rows={5} />
               </Col>
             </Row>
             <Row form>
-              <Col xs={6}>
+              <Col xs={12}>
                 <Button className="mb-3" type="submit" color="success" size="lg" block>Send</Button>
               </Col>
             </Row>
           </Form>
+        </Col>
+        <Col xs={12} sm={6} className="order-lg-2 order-1">
+          {/* eslint-disable-next-line */}
+          <img
+            alt="IndigiShare Group Photo 2021-07-16"
+            src={indigiShareGroupPhoto20210716Image}
+            className="w-100"
+          />
         </Col>
       </Row>
     </Container>

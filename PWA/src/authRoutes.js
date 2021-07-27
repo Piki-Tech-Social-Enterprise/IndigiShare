@@ -25,15 +25,15 @@ const systemAdminRoleOnly = {
 const authRoutes = [
   {
     layout: '/auth',
-    path: '/',
-    name: 'Home',
-    component: null,
+    path: '/Dashboard',
+    name: 'Dashboard',
+    component: lazy(async () => await import('views/Auth/AuthDashboardView')),
     exact: true,
-    iconLibrary: null,
-    icon: null,
-    roles: {},
-    excludeFromAuthenticatedRoutes: true,
-    excludeFromSidebar: true
+    iconLibrary: 'now-ui-icons',
+    icon: 'design_app',
+    roles: basicRoleUp,
+    excludeFromAuthenticatedRoutes: false,
+    excludeFromSidebar: false
   },
   {
     layout: '/auth',
