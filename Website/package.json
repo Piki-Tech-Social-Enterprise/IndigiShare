@@ -37,7 +37,7 @@
     "minify-sass": "node-sass src/assets/scss/indigishare-platform.scss src/assets/css/indigishare-platform.min.css --output-style compressed",
     "map-sass": "node-sass src/assets/scss/indigishare-platform.scss src/assets/css/indigishare-platform.css --source-map true",
     "firebaseServe": "firebase serve",
-    "firebaseDeploy": "firebase deploy",
+    "firebaseDeploy": "firebase deploy -m \"\"\"$REACT_APP_WEB_NAME v$REACT_APP_WEB_BUILD_VERSION\"\"\" --except functions",
     "firebaseUseProd": "firebase use \"indigishare-platform\"",
     "envCmdLocal": "env-cmd -e local run-s -sn",
     "envCmdProd": "env-cmd -e prod run-s -sn",
