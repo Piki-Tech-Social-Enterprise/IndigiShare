@@ -51,7 +51,7 @@ const LoginView = props => {
       try {
         setIsSubmitting(true);
         await props.firebase.signInWithEmailAndPassword(email, password);
-        props.history.push('/auth');
+        props.history.push('/auth/Dashboard');
       } catch (error) {
         displayMessage = error.message;
       }

@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {
+  useEffect
+} from 'react';
 import {
   Line,
   Bar
@@ -28,99 +30,89 @@ import {
   dashboardShippedProductsChart,
   dashboardAllProductsChart,
   dashboard24HoursPerformanceChart
-} from 'variables/charts.jsx';
+} from '../variables/charts';
 import withAuthorization from 'components/Firebase/HighOrder/withAuthorization';
 import Swal from 'sweetalert2';
 
 const AuthDashboardView = props => {
-  
   const answers = [];
-
-useEffect(() => {
-  
-  const isVoluteer = () => {
-    if( props.authUser.vid && props.authUser.onBoardingCompleted === false) {
-
-      Swal.fire({
-        icon: 'info',
-        title: 'To help us organise work for Volunteers',
-        text: 'We need more information',
-        showCancelButton: true,
-        cancelButtonText: 'Skip'  
-      }).then((result) => {
-
-        if(result.dismiss){
-          addVolunteerDetails();
-        }
-        if(result.value === true){
-          Swal.mixin({
-            icon: 'info',
-            confirmButtonText: 'Next &rarr;',
-            showCancelButton: true,
-            progressSteps: ['1', '2', '3']
-          }).queue([
-            {
-              title: 'Question 1',
-              input: 'text',
-              text: 'What region are you from?',
-              inputPlaceholder: 'Region'
-            },
-            {
-              title: 'Question 2',
-              text: 'How far are you willing to travel?(kms)',
-              input: 'range',
-              inputValue: '25',
-              inputAttributes: {
-                min: 0,
-                max: 120,
-                step: 1
-              },
-            },
-            {
-              title: 'Question 3',
-              text: 'Tell us what type of work you like ',
-              input: 'text',
-              inputPlaceholder: 'Type here...',
-              inputAttributes: {
-                'aria-label': 'Type your message here'
-              }
-            }
-          ]).then((result) => {
-            if (result.value) {
-             const onboardingAnswers = result.value;
-             onboardingAnswers.map((i) => {
-               answers.push(i);
-               return null;
-             });
-            }
-          }).finally(()=> {
-           Swal.fire({
-            title: 'All done!',
-            icon:'success',
-            confirmButtonText: 'Thanks'
-          }).then(() => {
+  useEffect(() => {
+    const isVoluteer = () => {
+      if (props.authUser.vid && props.authUser.onBoardingCompleted === false) {
+        Swal.fire({
+          icon: 'info',
+          title: 'To help us organise work for Volunteers',
+          text: 'We need more information',
+          showCancelButton: true,
+          cancelButtonText: 'Skip'
+        }).then((result) => {
+          if (result.dismiss) {
             addVolunteerDetails();
-          })
-          })
-        }
-      })
+          }
+          if (result.value === true) {
+            Swal.mixin({
+              icon: 'info',
+              confirmButtonText: 'Next &rarr;',
+              showCancelButton: true,
+              progressSteps: ['1', '2', '3']
+            }).queue([
+              {
+                title: 'Question 1',
+                input: 'text',
+                text: 'What region are you from?',
+                inputPlaceholder: 'Region'
+              },
+              {
+                title: 'Question 2',
+                text: 'How far are you willing to travel?(kms)',
+                input: 'range',
+                inputValue: '25',
+                inputAttributes: {
+                  min: 0,
+                  max: 120,
+                  step: 1
+                },
+              },
+              {
+                title: 'Question 3',
+                text: 'Tell us what type of work you like ',
+                input: 'text',
+                inputPlaceholder: 'Type here...',
+                inputAttributes: {
+                  'aria-label': 'Type your message here'
+                }
+              }
+            ]).then((result) => {
+              if (result.value) {
+                const onboardingAnswers = result.value;
+                onboardingAnswers.map((i) => {
+                  answers.push(i);
+                  return null;
+                });
+              }
+            }).finally(() => {
+              Swal.fire({
+                title: 'All done!',
+                icon: 'success',
+                confirmButtonText: 'Thanks'
+              }).then(() => {
+                addVolunteerDetails();
+              })
+            })
+          }
+        })
+      }
     }
-  }
-
-  const addVolunteerDetails = async() => {
-
-    await props.firebase.addDbVolunteerDetails(props.authUser.vid,{
-      region: answers[0] || '',
-      travelDistance: answers[1] || '',
-      type: answers[2] || ''
-    });
-     
-    await props.firebase.updateUserOnboarding(props.authUser.uid);
-  }
-
-  isVoluteer();
-
-}, [props, answers])
+    const addVolunteerDetails = async () => {
+      await props.firebase.addDbVolunteerDetails(props.authUser.vid, {
+        region: answers[0] || '',
+        travelDistance: answers[1] || '',
+        type: answers[2] || ''
+      });
+      await props.firebase.updateUserOnboarding(props.authUser.uid);
+    }
+    isVoluteer();
+  }, [props, answers])
   return (
     <>
       <AuthPanelHeader
@@ -153,7 +145,7 @@ useEffect(() => {
                     <DropdownItem>Something else here</DropdownItem>
                     <DropdownItem className="text-danger">
                       Remove data
-                      </DropdownItem>
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </CardHeader>
@@ -168,8 +160,8 @@ useEffect(() => {
               <CardFooter>
                 <div className="stats">
                   <i className="now-ui-icons arrows-1_refresh-69" /> Just
-                    Updated
-                  </div>
+                  Updated
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -191,7 +183,7 @@ useEffect(() => {
                     <DropdownItem>Something else here</DropdownItem>
                     <DropdownItem className="text-danger">
                       Remove data
-                      </DropdownItem>
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </CardHeader>
@@ -206,8 +198,8 @@ useEffect(() => {
               <CardFooter>
                 <div className="stats">
                   <i className="now-ui-icons arrows-1_refresh-69" /> Just
-                    Updated
-                  </div>
+                  Updated
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -228,7 +220,7 @@ useEffect(() => {
               <CardFooter>
                 <div className="stats">
                   <i className="now-ui-icons ui-2_time-alarm" /> Last 7 days
-                  </div>
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -256,7 +248,7 @@ useEffect(() => {
                         <td className="text-left">
                           Sign contract for "What are conference organizers
                           afraid of?"
-                          </td>
+                        </td>
                         <td className="td-actions text-right">
                           <Button
                             className="btn-round btn-icon btn-icon-mini btn-neutral"
@@ -271,7 +263,7 @@ useEffect(() => {
                             target="tooltip731609871"
                           >
                             Edit Task
-                            </UncontrolledTooltip>
+                          </UncontrolledTooltip>
                           <Button
                             className="btn-round btn-icon btn-icon-mini btn-neutral"
                             color="danger"
@@ -285,7 +277,7 @@ useEffect(() => {
                             target="tooltip923217206"
                           >
                             Remove
-                            </UncontrolledTooltip>
+                          </UncontrolledTooltip>
                         </td>
                       </tr>
                       <tr>
@@ -300,7 +292,7 @@ useEffect(() => {
                         <td className="text-left">
                           Lines From Great Russian Literature? Or E-mails From
                           My Boss?
-                          </td>
+                        </td>
                         <td className="td-actions text-right">
                           <Button
                             className="btn-round btn-icon btn-icon-mini btn-neutral"
@@ -315,7 +307,7 @@ useEffect(() => {
                             target="tooltip907509347"
                           >
                             Edit Task
-                            </UncontrolledTooltip>
+                          </UncontrolledTooltip>
                           <Button
                             className="btn-round btn-icon btn-icon-mini btn-neutral"
                             color="danger"
@@ -329,7 +321,7 @@ useEffect(() => {
                             target="tooltip496353037"
                           >
                             Remove
-                            </UncontrolledTooltip>
+                          </UncontrolledTooltip>
                         </td>
                       </tr>
                       <tr>
@@ -345,7 +337,7 @@ useEffect(() => {
                           Flooded: One year later, assessing what was lost and
                           what was found when a ravaging rain swept through
                           metro Detroit
-                          </td>
+                        </td>
                         <td className="td-actions text-right">
                           <Button
                             className="btn-round btn-icon btn-icon-mini btn-neutral"
@@ -360,7 +352,7 @@ useEffect(() => {
                             target="tooltip326247652"
                           >
                             Edit Task
-                            </UncontrolledTooltip>
+                          </UncontrolledTooltip>
                           <Button
                             className="btn-round btn-icon btn-icon-mini btn-neutral"
                             color="danger"
@@ -374,7 +366,7 @@ useEffect(() => {
                             target="tooltip389516969"
                           >
                             Remove
-                            </UncontrolledTooltip>
+                          </UncontrolledTooltip>
                         </td>
                       </tr>
                     </tbody>
@@ -385,8 +377,8 @@ useEffect(() => {
                 <hr />
                 <div className="stats">
                   <i className="now-ui-icons loader_refresh spin" /> Updated 3
-                    minutes ago
-                  </div>
+                  minutes ago
+                </div>
               </CardFooter>
             </Card>
           </Col>
